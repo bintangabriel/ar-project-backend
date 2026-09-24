@@ -3,6 +3,7 @@ import express, {
 } from 'express';
 
 import uploadRoutes from './routes/upload.route';
+import { UserAuth } from './middleware/Authentication';
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.get('/health', (req, res) => {
 /**
  * Routes
  */
-app.use('/api/upload', uploadRoutes);
+app.use('/api/upload', UserAuth(), uploadRoutes);
 
 /**
  * Error handler

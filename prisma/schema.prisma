@@ -14,3 +14,94 @@ model ImportedData {
 
   @@map("imported_data")
 }
+
+model user {
+  id                String?                @unique @db.VarChar @id
+  name                     String                 @db.VarChar
+  email                    String?                @db.VarChar
+  password                 String?                @db.VarChar
+  /// phone number, default null
+  phone                    String?                @db.VarChar
+  /// wa number, default null
+  whatsapp_number          String?                @db.VarChar
+  /// default `Asia/Jakarta`
+  timezone                 String?                @default("Asia/Jakarta") @db.VarChar
+  /// emailVerificationToken, null if isVerified = true. Used for checking email verification
+  email_verification_token String?                @db.VarChar
+  /// user's profile picture in URL, default null
+  profile_picture_url      String?                @db.VarChar
+  last_login               DateTime?              @db.Timestamptz(3)
+  created_at               DateTime               @default(now()) @db.Timestamptz(3)
+  updated_at               DateTime?              @default(now()) @db.Timestamptz(3)
+  deleted_at               DateTime?              @db.Timestamptz(3)
+  /// used for verifiying email, default false
+  is_email_verified        Boolean                @default(false)
+  session_token            session_token[]
+  user_otp                 user_otp[]
+  sessions                 user_session[]
+  role_id                  String?
+  role                     role                   @relation(fields: [role_id], references: [id])
+
+  @@index([email])
+  @@index([email(ops: raw("gin_trgm_ops"))], map: "email_trgm_idx", type: Gin)
+  @@index([whatsapp_number])
+  @@index([id])
+}
+
+model user_otp {
+  id              Int        @id @default(autoincrement())
+  whatsapp_number String     @db.VarChar
+  user_id         Int?
+  temp_user_id    Int?
+  otp             String     @db.VarChar
+  created_at      DateTime   @default(now()) @db.Timestamptz(3)
+  expired_at      DateTime?  @db.Timestamptz(3)
+  verified_at     DateTime?  @db.Timestamptz(3)
+  resend_token    String?    @db.VarChar
+  retries         Int?
+  allow_resend_at DateTime?  @db.Timestamptz(3)
+  temp_user       temp_user? @relation(fields: [temp_user_id], references: [id])
+  user            user?      @relation(fields: [user_id], references: [id])
+}
+
+model temp_user {
+  id              Int        @id @default(autoincrement())
+  name            String     @db.VarChar
+  whatsapp_number String?    @db.VarChar
+  user_agent      String?    @db.VarChar
+  timezone        String?    @default("Asia/Jakarta") @db.VarChar
+  created_at      DateTime   @default(now()) @db.Timestamptz(3)
+  deleted_at      DateTime?  @db.Timestamptz(3)
+  register_ref_id String?    @db.VarChar
+  user_otp        user_otp[]
+}
+
+model session_token {
+  id          Int       @id @default(autoincrement())
+  user_id     Int?
+  token       String    @db.VarChar
+  created_at  DateTime  @default(now()) @db.Timestamptz(3)
+  expired_at  DateTime? @db.Timestamptz(3)
+  accessed_at DateTime? @db.Timestamptz(3)
+  user        user?     @relation(fields: [user_id], references: [id])
+}
+
+model user_session {
+  id            String         @id @db.VarChar
+  created_at    DateTime       @default(now()) @db.Timestamptz(3)
+  expired_at    DateTime       @db.Timestamptz(3)
+  user_agent    Json?
+  ip            String?        @db.VarChar
+  data          Json?
+  user_id       Int
+  refresh_token refresh_token?
+  user          user           @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+}
+
+model role {
+  id            String         @id @db.VarChar
+  name          String                 @db.VarChar
+  user_role     user[]
+}
