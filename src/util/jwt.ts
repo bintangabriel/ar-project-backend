@@ -5,7 +5,7 @@ import { readFileSync } from 'fs';
 
 
 export type UserJWTData = {
-  id: number,
+  id: string,
   name: string,
   email?: string | null,
   whatsapp_number?: string,

@@ -16,7 +16,7 @@ model ImportedData {
 }
 
 model user {
-  id                String?                @unique @db.VarChar @id
+  id                String                @unique @db.VarChar @id
   name                     String                 @db.VarChar
   email                    String?                @db.VarChar
   password                 String?                @db.VarChar
@@ -40,7 +40,7 @@ model user {
   user_otp                 user_otp[]
   sessions                 user_session[]
   role_id                  String?
-  role                     role                   @relation(fields: [role_id], references: [id])
+  role                     role?                  @relation(fields: [role_id], references: [id])
 
   @@index([email])
   @@index([email(ops: raw("gin_trgm_ops"))], map: "email_trgm_idx", type: Gin)
@@ -51,7 +51,7 @@ model user {
 model user_otp {
   id              Int        @id @default(autoincrement())
   whatsapp_number String     @db.VarChar
-  user_id         Int?
+  user_id         String?
   temp_user_id    Int?
   otp             String     @db.VarChar
   created_at      DateTime   @default(now()) @db.Timestamptz(3)
@@ -60,6 +60,7 @@ model user_otp {
   resend_token    String?    @db.VarChar
   retries         Int?
   allow_resend_at DateTime?  @db.Timestamptz(3)
+
   temp_user       temp_user? @relation(fields: [temp_user_id], references: [id])
   user            user?      @relation(fields: [user_id], references: [id])
 }
@@ -78,7 +79,7 @@ model temp_user {
 
 model session_token {
   id          Int       @id @default(autoincrement())
-  user_id     Int?
+  user_id     String?
   token       String    @db.VarChar
   created_at  DateTime  @default(now()) @db.Timestamptz(3)
   expired_at  DateTime? @db.Timestamptz(3)
@@ -93,8 +94,7 @@ model user_session {
   user_agent    Json?
   ip            String?        @db.VarChar
   data          Json?
-  user_id       Int
-  refresh_token refresh_token?
+  user_id       String
   user          user           @relation(fields: [user_id], references: [id])
 
   @@index([user_id])

@@ -1914,7 +1914,7 @@ postgres@3.4.7:
   resolved "https://registry.yarnpkg.com/postgres/-/postgres-3.4.7.tgz#122f460a808fe300cae53f592108b9906e625345"
   integrity sha512-Jtc2612XINuBjIl/QTWsV5UvE8UHuNblcO3vVADSrKsrc6RqGX6lOW1cEo3CM2v0XG4Nat8nI+YM7/f26VxXLw==
 
-prisma@7:
+prisma@7.10.0:
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-7.10.0.tgz#f8fd28b6665620926f5124b278ada2e9f3d24bc3"
   integrity sha512-o0ornyJOWgygVAzGCpr8PdXV8EJLHyVGDDUr/voBQt8Azzw8cYTByzzPGcA/m4tCkPcnJA8raEOv2CslsKhPEw==

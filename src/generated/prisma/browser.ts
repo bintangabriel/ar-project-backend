@@ -22,3 +22,33 @@ export * from './enums.js';
  * 
  */
 export type ImportedData = Prisma.ImportedDataModel
+/**
+ * Model user
+ * 
+ */
+export type user = Prisma.userModel
+/**
+ * Model user_otp
+ * 
+ */
+export type user_otp = Prisma.user_otpModel
+/**
+ * Model temp_user
+ * 
+ */
+export type temp_user = Prisma.temp_userModel
+/**
+ * Model session_token
+ * 
+ */
+export type session_token = Prisma.session_tokenModel
+/**
+ * Model user_session
+ * 
+ */
+export type user_session = Prisma.user_sessionModel
+/**
+ * Model role
+ * 
+ */
+export type role = Prisma.roleModel

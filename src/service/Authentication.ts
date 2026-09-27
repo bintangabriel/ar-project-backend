@@ -45,21 +45,6 @@ const loginEmail = async (loginData: LoginData, sessionData: SessionData) => {
         { email: decyrptedEmail.toLowerCase() }
       ],
       deleted_at: null
-    },
-    include: {
-      tryouts: {
-        select: {
-          tryout_id: true
-        }
-      },
-      user_faculty_dream: {
-        include: {
-          faculty: {
-            select: { id: true, campus: { select: { name: true, id: true } } }
-          },
-
-        }
-      }
     }
   })
 
@@ -89,7 +74,6 @@ const loginEmail = async (loginData: LoginData, sessionData: SessionData) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      isVerified: user.is_verified,
       is_email_verified: user.is_email_verified,
       whatsapp_number: user.whatsapp_number,
       timezone: user.timezone,
@@ -105,7 +89,7 @@ const loginEmail = async (loginData: LoginData, sessionData: SessionData) => {
   }
 }
 
-export async function saveLoginSession(id: number, sessionData: SessionData, superadmin?: boolean, expiry_in_seconds?: number): Promise<string> {
+export async function saveLoginSession(id: string, sessionData: SessionData, superadmin?: boolean, expiry_in_seconds?: number): Promise<string> {
   const userAgent = sessionData.userAgent ? new UAParser(sessionData.userAgent) : undefined
   const ip = sessionData.ip ? sessionData.ip : undefined
   const data = sessionData.data ? sessionData.data : undefined
@@ -116,30 +100,16 @@ export async function saveLoginSession(id: number, sessionData: SessionData, sup
   const device = sessionData.userAgent ?? new UAParser(sessionData.userAgent).getDevice()['model']
   const os = sessionData.userAgent ?? new UAParser(sessionData.userAgent).getOS()['name']
 
-  if (superadmin) {
-    await prisma.superadmin_session.create({
-      data: {
-        id: sessionId,
-        expired_at: expiredAt,
-        user_agent: userAgent ? JSON.parse(JSON.stringify(userAgent.getResult())) : null,
-        ip: ip,
-        data: data,
-        device: device || null,
-        os: os || null,
-        superadmin_id: id,
-      }
-    })
-  } else {
-    await prisma.user_session.create({
-      data: {
-        id: sessionId,
-        expired_at: expiredAt,
-        user_agent: userAgent ? JSON.parse(JSON.stringify(userAgent.getResult())) : null,
-        ip: ip,
-        data: data,
-        user_id: id,
-      }
-    })
-  }
+
+  await prisma.user_session.create({
+    data: {
+      id: sessionId,
+      expired_at: expiredAt,
+      user_agent: userAgent ? JSON.parse(JSON.stringify(userAgent.getResult())) : null,
+      ip: ip,
+      data: data,
+      user_id: id,
+    }
+  })
   return sessionId
 }

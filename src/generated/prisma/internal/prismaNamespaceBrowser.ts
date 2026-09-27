@@ -51,7 +51,13 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  ImportedData: 'ImportedData'
+  ImportedData: 'ImportedData',
+  user: 'user',
+  user_otp: 'user_otp',
+  temp_user: 'temp_user',
+  session_token: 'session_token',
+  user_session: 'user_session',
+  role: 'role'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,6 +85,91 @@ export const ImportedDataScalarFieldEnum = {
 export type ImportedDataScalarFieldEnum = (typeof ImportedDataScalarFieldEnum)[keyof typeof ImportedDataScalarFieldEnum]
 
 
+export const UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  phone: 'phone',
+  whatsapp_number: 'whatsapp_number',
+  timezone: 'timezone',
+  email_verification_token: 'email_verification_token',
+  profile_picture_url: 'profile_picture_url',
+  last_login: 'last_login',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at',
+  is_email_verified: 'is_email_verified',
+  role_id: 'role_id'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const User_otpScalarFieldEnum = {
+  id: 'id',
+  whatsapp_number: 'whatsapp_number',
+  user_id: 'user_id',
+  temp_user_id: 'temp_user_id',
+  otp: 'otp',
+  created_at: 'created_at',
+  expired_at: 'expired_at',
+  verified_at: 'verified_at',
+  resend_token: 'resend_token',
+  retries: 'retries',
+  allow_resend_at: 'allow_resend_at'
+} as const
+
+export type User_otpScalarFieldEnum = (typeof User_otpScalarFieldEnum)[keyof typeof User_otpScalarFieldEnum]
+
+
+export const Temp_userScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  whatsapp_number: 'whatsapp_number',
+  user_agent: 'user_agent',
+  timezone: 'timezone',
+  created_at: 'created_at',
+  deleted_at: 'deleted_at',
+  register_ref_id: 'register_ref_id'
+} as const
+
+export type Temp_userScalarFieldEnum = (typeof Temp_userScalarFieldEnum)[keyof typeof Temp_userScalarFieldEnum]
+
+
+export const Session_tokenScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  token: 'token',
+  created_at: 'created_at',
+  expired_at: 'expired_at',
+  accessed_at: 'accessed_at'
+} as const
+
+export type Session_tokenScalarFieldEnum = (typeof Session_tokenScalarFieldEnum)[keyof typeof Session_tokenScalarFieldEnum]
+
+
+export const User_sessionScalarFieldEnum = {
+  id: 'id',
+  created_at: 'created_at',
+  expired_at: 'expired_at',
+  user_agent: 'user_agent',
+  ip: 'ip',
+  data: 'data',
+  user_id: 'user_id'
+} as const
+
+export type User_sessionScalarFieldEnum = (typeof User_sessionScalarFieldEnum)[keyof typeof User_sessionScalarFieldEnum]
+
+
+export const RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -87,10 +178,35 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
