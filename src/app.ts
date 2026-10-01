@@ -1,14 +1,21 @@
 import express, {
   ErrorRequestHandler
 } from 'express';
-
-import uploadRoutes from './routes/upload.route';
+import cors from 'cors'
+import routes from './routes/routes';
 import { UserAuth } from './middleware/Authentication';
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // frontend local
+    credentials: true, // only if you use cookies
+  })
+);
 
 /**
  * Health check
@@ -23,7 +30,7 @@ app.get('/health', (req, res) => {
 /**
  * Routes
  */
-app.use('/api/upload', UserAuth(), uploadRoutes);
+app.use('/api/v1', routes);
 
 /**
  * Error handler

@@ -89,10 +89,10 @@ const loginEmail = async (loginData: LoginData, sessionData: SessionData) => {
   }
 }
 
-export async function saveLoginSession(id: string, sessionData: SessionData, superadmin?: boolean, expiry_in_seconds?: number): Promise<string> {
+export async function saveLoginSession(id: string, sessionData: SessionData, expiry_in_seconds?: number): Promise<string> {
   const userAgent = sessionData.userAgent ? new UAParser(sessionData.userAgent) : undefined
   const ip = sessionData.ip ?? null
-const data = sessionData.data ?? null
+  const data = sessionData.data ?? null
   const jwtExpiry = expiry_in_seconds ? expiry_in_seconds : JWT_ACCESS_TOKEN_EXPIRY_IN_SECONDS
   console.log("jwt : " + Number(jwtExpiry))
   const expiredAt = new Date(new Date().getTime() + Number(jwtExpiry) * 1000)

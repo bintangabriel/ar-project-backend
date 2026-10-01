@@ -55,7 +55,7 @@ export const generateUserJWT = async (data: UserJWTData, opts: SignOptions = {},
 
 export const signJWT = (payload: Record<string, any>, opts: SignOptions = {}): string => {
   return jwt.sign(payload, getSecretOrPrivateKey(), {
-    algorithm: 'ES256',
+    algorithm: 'RS256',
     ...opts
   })
 }

@@ -1,6 +1,6 @@
 export const JWT_ACCESS_TOKEN_EXPIRY_IN_SECONDS = 28800
 
-export const SECRET = process.env.SECRET || 'heythisissecret'
+export const SECRET = process.env.SECRET || 'heyhey'
 
 export const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
 

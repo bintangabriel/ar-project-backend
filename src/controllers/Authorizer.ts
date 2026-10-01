@@ -12,10 +12,10 @@ export type LoginMobileBody = {
 export async function loginEmailRoute(req: Request<unknown, unknown, LoginMobileBody, unknown>, res: Response) {
   const userAgent = req.headers['user-agent']
 
-const sessionData: SessionData = {
-  ...(userAgent && { userAgent }),
-  ip: req.ip || (req.headers['x-forwarded-for'] as string),
-}
+  const sessionData: SessionData = {
+    ...(userAgent && { userAgent }),
+    ip: req.ip || (req.headers['x-forwarded-for'] as string),
+  }
   const loginResponse = await LoginUser(
     'email',
     req.body.login,
