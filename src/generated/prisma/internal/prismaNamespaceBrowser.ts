@@ -57,7 +57,13 @@ export const ModelName = {
   temp_user: 'temp_user',
   session_token: 'session_token',
   user_session: 'user_session',
-  role: 'role'
+  role: 'role',
+  ascii_sk: 'ascii_sk',
+  ascii_cr: 'ascii_cr',
+  ascii_aging: 'ascii_aging',
+  ascii_aging_monthly: 'ascii_aging_monthly',
+  ascii_aging_daily: 'ascii_aging_daily',
+  mst_file: 'mst_file'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -168,6 +174,82 @@ export const RoleScalarFieldEnum = {
 } as const
 
 export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
+
+
+export const Ascii_skScalarFieldEnum = {
+  id: 'id',
+  peojf: 'peojf',
+  remo: 'remo',
+  date: 'date',
+  no_aggr: 'no_aggr',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_skScalarFieldEnum = (typeof Ascii_skScalarFieldEnum)[keyof typeof Ascii_skScalarFieldEnum]
+
+
+export const Ascii_crScalarFieldEnum = {
+  id: 'id',
+  peojf: 'peojf',
+  remo: 'remo',
+  date: 'date',
+  no_aggr: 'no_aggr',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_crScalarFieldEnum = (typeof Ascii_crScalarFieldEnum)[keyof typeof Ascii_crScalarFieldEnum]
+
+
+export const Ascii_agingScalarFieldEnum = {
+  id: 'id',
+  cust_name: 'cust_name',
+  saldo_ar: 'saldo_ar',
+  ovd_eom: 'ovd_eom',
+  no_aggr: 'no_aggr',
+  angke: 'angke',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_agingScalarFieldEnum = (typeof Ascii_agingScalarFieldEnum)[keyof typeof Ascii_agingScalarFieldEnum]
+
+
+export const Ascii_aging_monthlyScalarFieldEnum = {
+  id: 'id',
+  cust_name: 'cust_name',
+  saldo_ar: 'saldo_ar',
+  ovd_eom: 'ovd_eom',
+  no_aggr: 'no_aggr',
+  angke: 'angke',
+  id_mst_wilayah: 'id_mst_wilayah',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_aging_monthlyScalarFieldEnum = (typeof Ascii_aging_monthlyScalarFieldEnum)[keyof typeof Ascii_aging_monthlyScalarFieldEnum]
+
+
+export const Ascii_aging_dailyScalarFieldEnum = {
+  id: 'id',
+  cust_name: 'cust_name',
+  saldo_ar: 'saldo_ar',
+  ovd_eom: 'ovd_eom',
+  no_aggr: 'no_aggr',
+  angke: 'angke',
+  id_mst_wilayah: 'id_mst_wilayah',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_aging_dailyScalarFieldEnum = (typeof Ascii_aging_dailyScalarFieldEnum)[keyof typeof Ascii_aging_dailyScalarFieldEnum]
+
+
+export const Mst_fileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  size: 'size',
+  type: 'type',
+  created_at: 'created_at'
+} as const
+
+export type Mst_fileScalarFieldEnum = (typeof Mst_fileScalarFieldEnum)[keyof typeof Mst_fileScalarFieldEnum]
 
 
 export const SortOrder = {

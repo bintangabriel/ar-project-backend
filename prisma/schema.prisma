@@ -105,3 +105,67 @@ model role {
   name          String                 @db.VarChar
   user_role     user[]
 }
+
+model ascii_sk {
+  id        Int      @id @default(autoincrement())
+  peojf     String?
+  remo      String?
+  date      DateTime?
+  no_aggr   String?
+  file_name String
+}
+
+model ascii_cr {
+  id        Int      @id @default(autoincrement())
+  peojf     String?
+  remo      String?
+  date      DateTime?
+  no_aggr   String?
+  file_name String
+}
+
+model ascii_aging {
+  id        Int      @id @default(autoincrement())
+  cust_name String?
+  saldo_ar  Decimal?
+  ovd_eom   Decimal?
+  no_aggr   String?
+  angke     Int?
+  file_name String
+
+  @@map("ascii_aging")
+}
+
+model ascii_aging_monthly {
+  id             Int      @id @default(autoincrement())
+  cust_name      String?
+  saldo_ar       Decimal?
+  ovd_eom        Decimal?
+  no_aggr        String?
+  angke          Int?
+  id_mst_wilayah Int?
+  file_name      String
+
+  @@map("ascii_aging_monthly")
+}
+
+model ascii_aging_daily {
+  id             Int      @id @default(autoincrement())
+  cust_name      String?
+  saldo_ar       Decimal?
+  ovd_eom        Decimal?
+  no_aggr        String?
+  angke          Int?
+  id_mst_wilayah Int?
+  file_name      String
+
+  @@map("ascii_aging_daily")
+}
+
+model mst_file {
+  id      Int      @id @default(autoincrement())
+  name    String   
+  size    Decimal
+  type    String?
+  created_at  DateTime
+}

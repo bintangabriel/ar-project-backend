@@ -54,18 +54,14 @@ export const uploadExcel = async (
      * ]
      */
     const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(
-      worksheet,
+      worksheet!,
       {
         defval: null
       }
     );
 
     if (rows.length === 0) {
-      res.status(400).json({
-        success: false,
-        message: 'File contains no data'
-      });
-
+      res.status(400).json({success: false, message: 'File contains no data'});
       return;
     }
 

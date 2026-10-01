@@ -403,7 +403,13 @@ export const ModelName = {
   temp_user: 'temp_user',
   session_token: 'session_token',
   user_session: 'user_session',
-  role: 'role'
+  role: 'role',
+  ascii_sk: 'ascii_sk',
+  ascii_cr: 'ascii_cr',
+  ascii_aging: 'ascii_aging',
+  ascii_aging_monthly: 'ascii_aging_monthly',
+  ascii_aging_daily: 'ascii_aging_daily',
+  mst_file: 'mst_file'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -419,7 +425,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "importedData" | "user" | "user_otp" | "temp_user" | "session_token" | "user_session" | "role"
+    modelProps: "importedData" | "user" | "user_otp" | "temp_user" | "session_token" | "user_session" | "role" | "ascii_sk" | "ascii_cr" | "ascii_aging" | "ascii_aging_monthly" | "ascii_aging_daily" | "mst_file"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -941,6 +947,450 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ascii_sk: {
+      payload: Prisma.$ascii_skPayload<ExtArgs>
+      fields: Prisma.ascii_skFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ascii_skFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ascii_skFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>
+        }
+        findFirst: {
+          args: Prisma.ascii_skFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ascii_skFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>
+        }
+        findMany: {
+          args: Prisma.ascii_skFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>[]
+        }
+        create: {
+          args: Prisma.ascii_skCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>
+        }
+        createMany: {
+          args: Prisma.ascii_skCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ascii_skCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>[]
+        }
+        delete: {
+          args: Prisma.ascii_skDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>
+        }
+        update: {
+          args: Prisma.ascii_skUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>
+        }
+        deleteMany: {
+          args: Prisma.ascii_skDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ascii_skUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ascii_skUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>[]
+        }
+        upsert: {
+          args: Prisma.ascii_skUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_skPayload>
+        }
+        aggregate: {
+          args: Prisma.Ascii_skAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAscii_sk>
+        }
+        groupBy: {
+          args: Prisma.ascii_skGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_skGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ascii_skCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_skCountAggregateOutputType> | number
+        }
+      }
+    }
+    ascii_cr: {
+      payload: Prisma.$ascii_crPayload<ExtArgs>
+      fields: Prisma.ascii_crFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ascii_crFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ascii_crFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>
+        }
+        findFirst: {
+          args: Prisma.ascii_crFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ascii_crFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>
+        }
+        findMany: {
+          args: Prisma.ascii_crFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>[]
+        }
+        create: {
+          args: Prisma.ascii_crCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>
+        }
+        createMany: {
+          args: Prisma.ascii_crCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ascii_crCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>[]
+        }
+        delete: {
+          args: Prisma.ascii_crDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>
+        }
+        update: {
+          args: Prisma.ascii_crUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>
+        }
+        deleteMany: {
+          args: Prisma.ascii_crDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ascii_crUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ascii_crUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>[]
+        }
+        upsert: {
+          args: Prisma.ascii_crUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_crPayload>
+        }
+        aggregate: {
+          args: Prisma.Ascii_crAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAscii_cr>
+        }
+        groupBy: {
+          args: Prisma.ascii_crGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_crGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ascii_crCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_crCountAggregateOutputType> | number
+        }
+      }
+    }
+    ascii_aging: {
+      payload: Prisma.$ascii_agingPayload<ExtArgs>
+      fields: Prisma.ascii_agingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ascii_agingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ascii_agingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>
+        }
+        findFirst: {
+          args: Prisma.ascii_agingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ascii_agingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>
+        }
+        findMany: {
+          args: Prisma.ascii_agingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>[]
+        }
+        create: {
+          args: Prisma.ascii_agingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>
+        }
+        createMany: {
+          args: Prisma.ascii_agingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ascii_agingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>[]
+        }
+        delete: {
+          args: Prisma.ascii_agingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>
+        }
+        update: {
+          args: Prisma.ascii_agingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>
+        }
+        deleteMany: {
+          args: Prisma.ascii_agingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ascii_agingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ascii_agingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>[]
+        }
+        upsert: {
+          args: Prisma.ascii_agingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_agingPayload>
+        }
+        aggregate: {
+          args: Prisma.Ascii_agingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAscii_aging>
+        }
+        groupBy: {
+          args: Prisma.ascii_agingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_agingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ascii_agingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_agingCountAggregateOutputType> | number
+        }
+      }
+    }
+    ascii_aging_monthly: {
+      payload: Prisma.$ascii_aging_monthlyPayload<ExtArgs>
+      fields: Prisma.ascii_aging_monthlyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ascii_aging_monthlyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ascii_aging_monthlyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>
+        }
+        findFirst: {
+          args: Prisma.ascii_aging_monthlyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ascii_aging_monthlyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>
+        }
+        findMany: {
+          args: Prisma.ascii_aging_monthlyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>[]
+        }
+        create: {
+          args: Prisma.ascii_aging_monthlyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>
+        }
+        createMany: {
+          args: Prisma.ascii_aging_monthlyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ascii_aging_monthlyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>[]
+        }
+        delete: {
+          args: Prisma.ascii_aging_monthlyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>
+        }
+        update: {
+          args: Prisma.ascii_aging_monthlyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>
+        }
+        deleteMany: {
+          args: Prisma.ascii_aging_monthlyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ascii_aging_monthlyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ascii_aging_monthlyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>[]
+        }
+        upsert: {
+          args: Prisma.ascii_aging_monthlyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_monthlyPayload>
+        }
+        aggregate: {
+          args: Prisma.Ascii_aging_monthlyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAscii_aging_monthly>
+        }
+        groupBy: {
+          args: Prisma.ascii_aging_monthlyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_aging_monthlyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ascii_aging_monthlyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_aging_monthlyCountAggregateOutputType> | number
+        }
+      }
+    }
+    ascii_aging_daily: {
+      payload: Prisma.$ascii_aging_dailyPayload<ExtArgs>
+      fields: Prisma.ascii_aging_dailyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ascii_aging_dailyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ascii_aging_dailyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>
+        }
+        findFirst: {
+          args: Prisma.ascii_aging_dailyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ascii_aging_dailyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>
+        }
+        findMany: {
+          args: Prisma.ascii_aging_dailyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>[]
+        }
+        create: {
+          args: Prisma.ascii_aging_dailyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>
+        }
+        createMany: {
+          args: Prisma.ascii_aging_dailyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ascii_aging_dailyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>[]
+        }
+        delete: {
+          args: Prisma.ascii_aging_dailyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>
+        }
+        update: {
+          args: Prisma.ascii_aging_dailyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>
+        }
+        deleteMany: {
+          args: Prisma.ascii_aging_dailyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ascii_aging_dailyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ascii_aging_dailyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>[]
+        }
+        upsert: {
+          args: Prisma.ascii_aging_dailyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ascii_aging_dailyPayload>
+        }
+        aggregate: {
+          args: Prisma.Ascii_aging_dailyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAscii_aging_daily>
+        }
+        groupBy: {
+          args: Prisma.ascii_aging_dailyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_aging_dailyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ascii_aging_dailyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Ascii_aging_dailyCountAggregateOutputType> | number
+        }
+      }
+    }
+    mst_file: {
+      payload: Prisma.$mst_filePayload<ExtArgs>
+      fields: Prisma.mst_fileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.mst_fileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.mst_fileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>
+        }
+        findFirst: {
+          args: Prisma.mst_fileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.mst_fileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>
+        }
+        findMany: {
+          args: Prisma.mst_fileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>[]
+        }
+        create: {
+          args: Prisma.mst_fileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>
+        }
+        createMany: {
+          args: Prisma.mst_fileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.mst_fileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>[]
+        }
+        delete: {
+          args: Prisma.mst_fileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>
+        }
+        update: {
+          args: Prisma.mst_fileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>
+        }
+        deleteMany: {
+          args: Prisma.mst_fileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.mst_fileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.mst_fileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>[]
+        }
+        upsert: {
+          args: Prisma.mst_fileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$mst_filePayload>
+        }
+        aggregate: {
+          args: Prisma.Mst_fileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMst_file>
+        }
+        groupBy: {
+          args: Prisma.mst_fileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Mst_fileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.mst_fileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Mst_fileCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1074,6 +1524,82 @@ export const RoleScalarFieldEnum = {
 export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
 
 
+export const Ascii_skScalarFieldEnum = {
+  id: 'id',
+  peojf: 'peojf',
+  remo: 'remo',
+  date: 'date',
+  no_aggr: 'no_aggr',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_skScalarFieldEnum = (typeof Ascii_skScalarFieldEnum)[keyof typeof Ascii_skScalarFieldEnum]
+
+
+export const Ascii_crScalarFieldEnum = {
+  id: 'id',
+  peojf: 'peojf',
+  remo: 'remo',
+  date: 'date',
+  no_aggr: 'no_aggr',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_crScalarFieldEnum = (typeof Ascii_crScalarFieldEnum)[keyof typeof Ascii_crScalarFieldEnum]
+
+
+export const Ascii_agingScalarFieldEnum = {
+  id: 'id',
+  cust_name: 'cust_name',
+  saldo_ar: 'saldo_ar',
+  ovd_eom: 'ovd_eom',
+  no_aggr: 'no_aggr',
+  angke: 'angke',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_agingScalarFieldEnum = (typeof Ascii_agingScalarFieldEnum)[keyof typeof Ascii_agingScalarFieldEnum]
+
+
+export const Ascii_aging_monthlyScalarFieldEnum = {
+  id: 'id',
+  cust_name: 'cust_name',
+  saldo_ar: 'saldo_ar',
+  ovd_eom: 'ovd_eom',
+  no_aggr: 'no_aggr',
+  angke: 'angke',
+  id_mst_wilayah: 'id_mst_wilayah',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_aging_monthlyScalarFieldEnum = (typeof Ascii_aging_monthlyScalarFieldEnum)[keyof typeof Ascii_aging_monthlyScalarFieldEnum]
+
+
+export const Ascii_aging_dailyScalarFieldEnum = {
+  id: 'id',
+  cust_name: 'cust_name',
+  saldo_ar: 'saldo_ar',
+  ovd_eom: 'ovd_eom',
+  no_aggr: 'no_aggr',
+  angke: 'angke',
+  id_mst_wilayah: 'id_mst_wilayah',
+  file_name: 'file_name'
+} as const
+
+export type Ascii_aging_dailyScalarFieldEnum = (typeof Ascii_aging_dailyScalarFieldEnum)[keyof typeof Ascii_aging_dailyScalarFieldEnum]
+
+
+export const Mst_fileScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  size: 'size',
+  type: 'type',
+  created_at: 'created_at'
+} as const
+
+export type Mst_fileScalarFieldEnum = (typeof Mst_fileScalarFieldEnum)[keyof typeof Mst_fileScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1181,6 +1707,20 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
  * Reference to a field of type 'QueryMode'
  */
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -1355,6 +1895,12 @@ export type GlobalOmitConfig = {
   session_token?: Prisma.session_tokenOmit
   user_session?: Prisma.user_sessionOmit
   role?: Prisma.roleOmit
+  ascii_sk?: Prisma.ascii_skOmit
+  ascii_cr?: Prisma.ascii_crOmit
+  ascii_aging?: Prisma.ascii_agingOmit
+  ascii_aging_monthly?: Prisma.ascii_aging_monthlyOmit
+  ascii_aging_daily?: Prisma.ascii_aging_dailyOmit
+  mst_file?: Prisma.mst_fileOmit
 }
 
 /* Types for Logging */

@@ -74,3 +74,33 @@ export type user_session = Prisma.user_sessionModel
  * 
  */
 export type role = Prisma.roleModel
+/**
+ * Model ascii_sk
+ * 
+ */
+export type ascii_sk = Prisma.ascii_skModel
+/**
+ * Model ascii_cr
+ * 
+ */
+export type ascii_cr = Prisma.ascii_crModel
+/**
+ * Model ascii_aging
+ * 
+ */
+export type ascii_aging = Prisma.ascii_agingModel
+/**
+ * Model ascii_aging_monthly
+ * 
+ */
+export type ascii_aging_monthly = Prisma.ascii_aging_monthlyModel
+/**
+ * Model ascii_aging_daily
+ * 
+ */
+export type ascii_aging_daily = Prisma.ascii_aging_dailyModel
+/**
+ * Model mst_file
+ * 
+ */
+export type mst_file = Prisma.mst_fileModel
