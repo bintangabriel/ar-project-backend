@@ -72,7 +72,7 @@ const getSecretOrPrivateKey = (): Secret => {
   return secretOrKey
 }
 
-export const verifyJWT = (jwtToken: string, algorithms: Algorithm[] = ['ES256'], secret?: string): JWTTokenData => {
+export const verifyJWT = (jwtToken: string, algorithms: Algorithm[] = ['RS256'], secret?: string): JWTTokenData => {
   return jwt.verify(jwtToken, secret ? secret : getSecretOrPrivateKey(), {
     algorithms: algorithms
   }) as JWTTokenData

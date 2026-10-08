@@ -37,7 +37,7 @@ export function UserAuth(): RequestHandler{
           throw new ARError('Failed to verify session', { status: 401,  code: ErrorCode.UserAuth.InvalidSession })
         }
 
-        const accountReq: Promise<user> = prisma.user.findFirst({
+        const accountReq = prisma.user.findFirst({
           where: {
             id: jwtUser.id
           }
