@@ -28,8 +28,42 @@ const toDecimal = (v: unknown): Prisma.Decimal | null => {
 
 const toDate = (v: unknown): Date | null => {
   if (isEmpty(v)) return null;
-  if (v instanceof Date) return isNaN(v.getTime()) ? null : v;
-  const d = new Date(String(v));
+
+  if (v instanceof Date) {
+    if (isNaN(v.getTime())) return null;
+
+    // Preserve the calendar date and normalize to UTC midnight.
+    return new Date(
+      Date.UTC(v.getFullYear(), v.getMonth(), v.getDate())
+    );
+  }
+
+  // Handle Excel date strings in DD-MM-YYYY format.
+  const value = String(v).trim();
+  const match = value.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/);
+
+  if (match) {
+    const [, dayStr, monthStr, yearStr] = match;
+    const day = Number(dayStr);
+    const month = Number(monthStr);
+    const year = Number(yearStr);
+
+    const date = new Date(Date.UTC(year, month - 1, day));
+
+    // Reject invalid dates, such as 32-01-2026.
+    if (
+      date.getUTCFullYear() !== year ||
+      date.getUTCMonth() !== month - 1 ||
+      date.getUTCDate() !== day
+    ) {
+      return null;
+    }
+
+    return date;
+  }
+
+  // Fallback for other supported date formats.
+  const d = new Date(value);
   return isNaN(d.getTime()) ? null : d;
 };
 
@@ -38,7 +72,7 @@ const toDate = (v: unknown): Date | null => {
 /* -------------------------------------------------------------------------- */
 
 type Row = Record<string, unknown>;
-type Mapper = (row: Row, ctx: {fileName: string; idWilayah: number | null}) => any;
+type Mapper = (row: Row, ctx: {fileName: string; idWilayah: number | null; importDate: Date | null;}) => any;
 
 interface ImportConfig {
   map: Mapper;
@@ -102,6 +136,7 @@ const CONFIG: Record<string, ImportConfig> = {
       no_aggr: toStr(r.no_aggr),
       angke: toInt(r.angke),
       id_mst_wilayah: toInt(r.id_mst_wilayah) ?? c.idWilayah,
+      date: c.importDate,
       file_name: c.fileName
     }),
     insert: data => prisma.ascii_aging_daily.createMany({data})
@@ -155,6 +190,44 @@ export const importFile = async (req: Request, res: Response): Promise<void> => 
     const fileName = req.file.originalname;
     const idWilayah = toInt(req.body.id_mst_wilayah);
 
+    let importDate: Date | null = null;
+
+    if (type === 'aging_daily') {
+      const value = String(req.body.date ?? '').trim();
+
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        res.status(400).json({
+          success: false,
+          message: 'A valid import date is required for Aging daily.'
+        });
+        return;
+      }
+
+      const parts = value.split('-');
+
+      const year = Number(parts[0]);
+      const month = Number(parts[1]);
+      const day = Number(parts[2]);
+
+      const parsedDate = new Date(
+        Date.UTC(year, month - 1, day)
+      );
+
+      if (
+        parsedDate.getUTCFullYear() !== year ||
+        parsedDate.getUTCMonth() !== month - 1 ||
+        parsedDate.getUTCDate() !== day
+      ) {
+        res.status(400).json({
+          success: false,
+          message: 'Invalid import date.'
+        });
+        return;
+      }
+
+      importDate = parsedDate;
+    }
+
     /* Read XLSX / CSV (cellDates => real Date objects for date columns) */
     const workbook = XLSX.read(req.file.buffer, {type: 'buffer', cellDates: true});
     const firstSheetName = workbook.SheetNames[0];
@@ -176,7 +249,7 @@ export const importFile = async (req: Request, res: Response): Promise<void> => 
     /* Map rows, skipping rows where every mapped value is empty */
     const data = rawRows
       .map(normalizeRow)
-      .map(r => config.map(r, {fileName, idWilayah}))
+      .map(r => config.map(r, {fileName, idWilayah, importDate}))
       .filter(item =>
         Object.entries(item).some(([k, v]) => k !== 'file_name' && v !== null && v !== undefined)
       );

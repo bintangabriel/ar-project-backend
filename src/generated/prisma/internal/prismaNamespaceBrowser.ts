@@ -235,6 +235,7 @@ export const Ascii_aging_dailyScalarFieldEnum = {
   no_aggr: 'no_aggr',
   angke: 'angke',
   id_mst_wilayah: 'id_mst_wilayah',
+  date: 'date',
   file_name: 'file_name'
 } as const
 

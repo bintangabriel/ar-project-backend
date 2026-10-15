@@ -153,10 +153,11 @@ model ascii_aging_daily {
   id             Int      @id @default(autoincrement())
   cust_name      String?
   saldo_ar       Decimal?
-  ovd_eom        Decimal?
+  ovd_eom        Int?
   no_aggr        String?
   angke          Int?
   id_mst_wilayah Int?
+  date           DateTime?
   file_name      String
 
   @@map("ascii_aging_daily")
