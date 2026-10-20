@@ -28,16 +28,16 @@ export type AggregateAscii_aging_daily = {
 
 export type Ascii_aging_dailyAvgAggregateOutputType = {
   id: number | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: number | null
+  ovd_eom: number | null
   angke: number | null
   id_mst_wilayah: number | null
 }
 
 export type Ascii_aging_dailySumAggregateOutputType = {
   id: number | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   angke: number | null
   id_mst_wilayah: number | null
 }
@@ -45,8 +45,8 @@ export type Ascii_aging_dailySumAggregateOutputType = {
 export type Ascii_aging_dailyMinAggregateOutputType = {
   id: number | null
   cust_name: string | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
   id_mst_wilayah: number | null
@@ -57,8 +57,8 @@ export type Ascii_aging_dailyMinAggregateOutputType = {
 export type Ascii_aging_dailyMaxAggregateOutputType = {
   id: number | null
   cust_name: string | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
   id_mst_wilayah: number | null
@@ -222,8 +222,8 @@ export type ascii_aging_dailyGroupByArgs<ExtArgs extends runtime.Types.Extension
 export type Ascii_aging_dailyGroupByOutputType = {
   id: number
   cust_name: string | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
   id_mst_wilayah: number | null
@@ -257,8 +257,8 @@ export type ascii_aging_dailyWhereInput = {
   NOT?: Prisma.ascii_aging_dailyWhereInput | Prisma.ascii_aging_dailyWhereInput[]
   id?: Prisma.IntFilter<"ascii_aging_daily"> | number
   cust_name?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
-  saldo_ar?: Prisma.DecimalNullableFilter<"ascii_aging_daily"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.DecimalNullableFilter<"ascii_aging_daily"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.BigIntNullableFilter<"ascii_aging_daily"> | bigint | number | null
+  ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging_daily"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
   id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
@@ -284,8 +284,8 @@ export type ascii_aging_dailyWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ascii_aging_dailyWhereInput[]
   NOT?: Prisma.ascii_aging_dailyWhereInput | Prisma.ascii_aging_dailyWhereInput[]
   cust_name?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
-  saldo_ar?: Prisma.DecimalNullableFilter<"ascii_aging_daily"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.DecimalNullableFilter<"ascii_aging_daily"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.BigIntNullableFilter<"ascii_aging_daily"> | bigint | number | null
+  ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging_daily"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
   id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
@@ -316,8 +316,8 @@ export type ascii_aging_dailyScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ascii_aging_dailyScalarWhereWithAggregatesInput | Prisma.ascii_aging_dailyScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"ascii_aging_daily"> | number
   cust_name?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_daily"> | string | null
-  saldo_ar?: Prisma.DecimalNullableWithAggregatesFilter<"ascii_aging_daily"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.DecimalNullableWithAggregatesFilter<"ascii_aging_daily"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.BigIntNullableWithAggregatesFilter<"ascii_aging_daily"> | bigint | number | null
+  ovd_eom?: Prisma.BigIntNullableWithAggregatesFilter<"ascii_aging_daily"> | bigint | number | null
   no_aggr?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_daily"> | string | null
   angke?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_daily"> | number | null
   id_mst_wilayah?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_daily"> | number | null
@@ -327,8 +327,8 @@ export type ascii_aging_dailyScalarWhereWithAggregatesInput = {
 
 export type ascii_aging_dailyCreateInput = {
   cust_name?: string | null
-  saldo_ar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: bigint | number | null
+  ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
   id_mst_wilayah?: number | null
@@ -339,8 +339,8 @@ export type ascii_aging_dailyCreateInput = {
 export type ascii_aging_dailyUncheckedCreateInput = {
   id?: number
   cust_name?: string | null
-  saldo_ar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: bigint | number | null
+  ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
   id_mst_wilayah?: number | null
@@ -350,8 +350,8 @@ export type ascii_aging_dailyUncheckedCreateInput = {
 
 export type ascii_aging_dailyUpdateInput = {
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -362,8 +362,8 @@ export type ascii_aging_dailyUpdateInput = {
 export type ascii_aging_dailyUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -374,8 +374,8 @@ export type ascii_aging_dailyUncheckedUpdateInput = {
 export type ascii_aging_dailyCreateManyInput = {
   id?: number
   cust_name?: string | null
-  saldo_ar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: bigint | number | null
+  ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
   id_mst_wilayah?: number | null
@@ -385,8 +385,8 @@ export type ascii_aging_dailyCreateManyInput = {
 
 export type ascii_aging_dailyUpdateManyMutationInput = {
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -397,8 +397,8 @@ export type ascii_aging_dailyUpdateManyMutationInput = {
 export type ascii_aging_dailyUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -516,8 +516,8 @@ export type $ascii_aging_dailyPayload<ExtArgs extends runtime.Types.Extensions.I
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     cust_name: string | null
-    saldo_ar: runtime.Decimal | null
-    ovd_eom: runtime.Decimal | null
+    saldo_ar: bigint | null
+    ovd_eom: bigint | null
     no_aggr: string | null
     angke: number | null
     id_mst_wilayah: number | null
@@ -948,8 +948,8 @@ export interface Prisma__ascii_aging_dailyClient<T, Null = never, ExtArgs extend
 export interface ascii_aging_dailyFieldRefs {
   readonly id: Prisma.FieldRef<"ascii_aging_daily", 'Int'>
   readonly cust_name: Prisma.FieldRef<"ascii_aging_daily", 'String'>
-  readonly saldo_ar: Prisma.FieldRef<"ascii_aging_daily", 'Decimal'>
-  readonly ovd_eom: Prisma.FieldRef<"ascii_aging_daily", 'Decimal'>
+  readonly saldo_ar: Prisma.FieldRef<"ascii_aging_daily", 'BigInt'>
+  readonly ovd_eom: Prisma.FieldRef<"ascii_aging_daily", 'BigInt'>
   readonly no_aggr: Prisma.FieldRef<"ascii_aging_daily", 'String'>
   readonly angke: Prisma.FieldRef<"ascii_aging_daily", 'Int'>
   readonly id_mst_wilayah: Prisma.FieldRef<"ascii_aging_daily", 'Int'>

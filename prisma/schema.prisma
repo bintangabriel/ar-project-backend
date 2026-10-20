@@ -127,8 +127,8 @@ model ascii_cr {
 model ascii_aging {
   id        Int      @id @default(autoincrement())
   cust_name String?
-  saldo_ar  Decimal?
-  ovd_eom   Decimal?
+  saldo_ar  BigInt?
+  ovd_eom   BigInt?
   no_aggr   String?
   angke     Int?
   file_name String
@@ -139,8 +139,8 @@ model ascii_aging {
 model ascii_aging_monthly {
   id             Int      @id @default(autoincrement())
   cust_name      String?
-  saldo_ar       Decimal?
-  ovd_eom        Decimal?
+  saldo_ar       BigInt?
+  ovd_eom        BigInt?
   no_aggr        String?
   angke          Int?
   id_mst_wilayah Int?
@@ -152,8 +152,8 @@ model ascii_aging_monthly {
 model ascii_aging_daily {
   id             Int      @id @default(autoincrement())
   cust_name      String?
-  saldo_ar       Decimal?
-  ovd_eom        Int?
+  saldo_ar       BigInt?
+  ovd_eom        BigInt?
   no_aggr        String?
   angke          Int?
   id_mst_wilayah Int?

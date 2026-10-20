@@ -28,23 +28,23 @@ export type AggregateAscii_aging = {
 
 export type Ascii_agingAvgAggregateOutputType = {
   id: number | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: number | null
+  ovd_eom: number | null
   angke: number | null
 }
 
 export type Ascii_agingSumAggregateOutputType = {
   id: number | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   angke: number | null
 }
 
 export type Ascii_agingMinAggregateOutputType = {
   id: number | null
   cust_name: string | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
   file_name: string | null
@@ -53,8 +53,8 @@ export type Ascii_agingMinAggregateOutputType = {
 export type Ascii_agingMaxAggregateOutputType = {
   id: number | null
   cust_name: string | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
   file_name: string | null
@@ -206,8 +206,8 @@ export type ascii_agingGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type Ascii_agingGroupByOutputType = {
   id: number
   cust_name: string | null
-  saldo_ar: runtime.Decimal | null
-  ovd_eom: runtime.Decimal | null
+  saldo_ar: bigint | null
+  ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
   file_name: string
@@ -239,8 +239,8 @@ export type ascii_agingWhereInput = {
   NOT?: Prisma.ascii_agingWhereInput | Prisma.ascii_agingWhereInput[]
   id?: Prisma.IntFilter<"ascii_aging"> | number
   cust_name?: Prisma.StringNullableFilter<"ascii_aging"> | string | null
-  saldo_ar?: Prisma.DecimalNullableFilter<"ascii_aging"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.DecimalNullableFilter<"ascii_aging"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.BigIntNullableFilter<"ascii_aging"> | bigint | number | null
+  ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging"> | number | null
   file_name?: Prisma.StringFilter<"ascii_aging"> | string
@@ -262,8 +262,8 @@ export type ascii_agingWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ascii_agingWhereInput[]
   NOT?: Prisma.ascii_agingWhereInput | Prisma.ascii_agingWhereInput[]
   cust_name?: Prisma.StringNullableFilter<"ascii_aging"> | string | null
-  saldo_ar?: Prisma.DecimalNullableFilter<"ascii_aging"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.DecimalNullableFilter<"ascii_aging"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.BigIntNullableFilter<"ascii_aging"> | bigint | number | null
+  ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging"> | number | null
   file_name?: Prisma.StringFilter<"ascii_aging"> | string
@@ -290,8 +290,8 @@ export type ascii_agingScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ascii_agingScalarWhereWithAggregatesInput | Prisma.ascii_agingScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"ascii_aging"> | number
   cust_name?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging"> | string | null
-  saldo_ar?: Prisma.DecimalNullableWithAggregatesFilter<"ascii_aging"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.DecimalNullableWithAggregatesFilter<"ascii_aging"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.BigIntNullableWithAggregatesFilter<"ascii_aging"> | bigint | number | null
+  ovd_eom?: Prisma.BigIntNullableWithAggregatesFilter<"ascii_aging"> | bigint | number | null
   no_aggr?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging"> | string | null
   angke?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging"> | number | null
   file_name?: Prisma.StringWithAggregatesFilter<"ascii_aging"> | string
@@ -299,8 +299,8 @@ export type ascii_agingScalarWhereWithAggregatesInput = {
 
 export type ascii_agingCreateInput = {
   cust_name?: string | null
-  saldo_ar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: bigint | number | null
+  ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
   file_name: string
@@ -309,8 +309,8 @@ export type ascii_agingCreateInput = {
 export type ascii_agingUncheckedCreateInput = {
   id?: number
   cust_name?: string | null
-  saldo_ar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: bigint | number | null
+  ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
   file_name: string
@@ -318,8 +318,8 @@ export type ascii_agingUncheckedCreateInput = {
 
 export type ascii_agingUpdateInput = {
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -328,8 +328,8 @@ export type ascii_agingUpdateInput = {
 export type ascii_agingUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -338,8 +338,8 @@ export type ascii_agingUncheckedUpdateInput = {
 export type ascii_agingCreateManyInput = {
   id?: number
   cust_name?: string | null
-  saldo_ar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: bigint | number | null
+  ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
   file_name: string
@@ -347,8 +347,8 @@ export type ascii_agingCreateManyInput = {
 
 export type ascii_agingUpdateManyMutationInput = {
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -357,8 +357,8 @@ export type ascii_agingUpdateManyMutationInput = {
 export type ascii_agingUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   cust_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  saldo_ar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  ovd_eom?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_ar?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+  ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -408,12 +408,12 @@ export type ascii_agingSumOrderByAggregateInput = {
   angke?: Prisma.SortOrder
 }
 
-export type NullableDecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+export type NullableBigIntFieldUpdateOperationsInput = {
+  set?: bigint | number | null
+  increment?: bigint | number
+  decrement?: bigint | number
+  multiply?: bigint | number
+  divide?: bigint | number
 }
 
 
@@ -466,8 +466,8 @@ export type $ascii_agingPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     cust_name: string | null
-    saldo_ar: runtime.Decimal | null
-    ovd_eom: runtime.Decimal | null
+    saldo_ar: bigint | null
+    ovd_eom: bigint | null
     no_aggr: string | null
     angke: number | null
     file_name: string
@@ -896,8 +896,8 @@ export interface Prisma__ascii_agingClient<T, Null = never, ExtArgs extends runt
 export interface ascii_agingFieldRefs {
   readonly id: Prisma.FieldRef<"ascii_aging", 'Int'>
   readonly cust_name: Prisma.FieldRef<"ascii_aging", 'String'>
-  readonly saldo_ar: Prisma.FieldRef<"ascii_aging", 'Decimal'>
-  readonly ovd_eom: Prisma.FieldRef<"ascii_aging", 'Decimal'>
+  readonly saldo_ar: Prisma.FieldRef<"ascii_aging", 'BigInt'>
+  readonly ovd_eom: Prisma.FieldRef<"ascii_aging", 'BigInt'>
   readonly no_aggr: Prisma.FieldRef<"ascii_aging", 'String'>
   readonly angke: Prisma.FieldRef<"ascii_aging", 'Int'>
   readonly file_name: Prisma.FieldRef<"ascii_aging", 'String'>
