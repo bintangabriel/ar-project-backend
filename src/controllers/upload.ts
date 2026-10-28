@@ -75,16 +75,20 @@ type Row = Record<string, unknown>;
 type Mapper = (row: Row, ctx: {fileName: string; idWilayah: number | null; importDate: Date | null;}) => any;
 
 interface ImportConfig {
+  required: (ctx: {idWilayah: number | null}) => string[];
   map: Mapper;
   insert: (data: any[]) => Promise<{count: number}>;
 }
 
+
+
 const CONFIG: Record<string, ImportConfig> = {
   sk: {
+    required: () => ['name_collector', 'name_remo', 'tgl_sk_keluar', 'no_aggr'],
     map: (r, c) => ({
-      peojf: toStr(r.peojf),
-      remo: toStr(r.remo),
-      date: toDate(r.date),
+      peojf: toStr(r.name_collector),
+      remo: toStr(r.name_remo),
+      date: toDate(r.tgl_sk_keluar),
       no_aggr: toStr(r.no_aggr),
       file_name: c.fileName
     }),
@@ -92,6 +96,7 @@ const CONFIG: Record<string, ImportConfig> = {
   },
 
   cr: {
+    required: () => [],
     map: (r, c) => ({
       peojf: toStr(r.peojf),
       remo: toStr(r.remo),
@@ -103,6 +108,7 @@ const CONFIG: Record<string, ImportConfig> = {
   },
 
   aging: {
+    required: () => [],
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
       saldo_ar: toDecimal(r.saldo_ar),
@@ -115,6 +121,7 @@ const CONFIG: Record<string, ImportConfig> = {
   },
 
   aging_monthly: {
+    required: () => [],
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
       saldo_ar: toDecimal(r.saldo_ar),
@@ -129,6 +136,7 @@ const CONFIG: Record<string, ImportConfig> = {
   },
 
   aging_daily: {
+    required: () => [],
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
       saldo_ar: toDecimal(r.saldo_ar),
@@ -156,12 +164,11 @@ const chunk = <T>(arr: T[], size: number): T[][] => {
   return out;
 };
 
-// Make headers case/space-insensitive: " No_Aggr " -> "no_aggr"
+const normalizeKey = (k: string) => k.trim().toLowerCase().replace(/\s+/g, '_');
+
 const normalizeRow = (row: Row): Row => {
   const out: Row = {};
-  for (const [k, v] of Object.entries(row)) {
-    out[k.trim().toLowerCase().replace(/\s+/g, '_')] = v;
-  }
+  for (const [k, v] of Object.entries(row)) out[normalizeKey(k)] = v;
   return out;
 };
 
@@ -237,9 +244,26 @@ export const importFile = async (req: Request, res: Response): Promise<void> => 
       return;
     }
 
-    const rawRows = XLSX.utils.sheet_to_json<Row>(workbook.Sheets[firstSheetName]!, {
-      defval: null
-    });
+    const sheet = workbook.Sheets[firstSheetName]!;
+
+    const headerRow =
+      XLSX.utils.sheet_to_json<unknown[]>(sheet, {header: 1, defval: null})[0] ?? [];
+    const fileColumns = new Set(
+      headerRow.filter(h => !isEmpty(h)).map(h => normalizeKey(String(h)))
+    );
+
+    const missingColumns = config.required({idWilayah}).filter(c => !fileColumns.has(c));
+
+    if (missingColumns.length > 0) {
+      res.status(400).json({
+        success: false,
+        message: `Missing required column(s): ${missingColumns.join(', ')}`,
+        missingColumns
+      });
+      return;
+    }
+
+    const rawRows = XLSX.utils.sheet_to_json<Row>(sheet, {defval: null});
 
     if (rawRows.length === 0) {
       res.status(400).json({success: false, message: 'File contains no data'});
