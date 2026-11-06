@@ -112,7 +112,10 @@ model ascii_sk {
   remo      String?
   date      DateTime?
   no_aggr   String?
+  is_success Boolean?
   file_name String
+
+  @@index([no_aggr, date])
 }
 
 model ascii_cr {
@@ -122,6 +125,8 @@ model ascii_cr {
   date      DateTime?
   no_aggr   String?
   file_name String
+
+  @@index([no_aggr, date])
 }
 
 model ascii_aging {
@@ -143,9 +148,11 @@ model ascii_aging_monthly {
   ovd_eom        BigInt?
   no_aggr        String?
   angke          Int?
+  snapshot_date DateTime?
   id_mst_wilayah Int?
   file_name      String
 
+  @@index([no_aggr, snapshot_date])
   @@map("ascii_aging_monthly")
 }
 
@@ -161,6 +168,7 @@ model ascii_aging_daily {
   file_name      String
 
   @@map("ascii_aging_daily")
+  @@index([no_aggr, date])
 }
 
 model mst_file {

@@ -2,6 +2,7 @@ import type {Request, Response} from 'express';
 import * as XLSX from 'xlsx';
 import {Prisma} from '../generated/prisma/client'; // adjust path to your generated client
 import prisma from '../prisma'; // your shared client (the file with PrismaPg adapter)
+import { runEvaluateSk } from '../job/evaluateSk';
 
 /* -------------------------------------------------------------------------- */
 /* Value parsers                                                              */
@@ -19,11 +20,14 @@ const toInt = (v: unknown): number | null => {
   return Number.isFinite(n) ? Math.trunc(n) : null;
 };
 
-// Decimal: pass as string to avoid float precision loss
-const toDecimal = (v: unknown): Prisma.Decimal | null => {
+// BigInt: Excel gives numbers (possibly with .0 or decimals), so round first.
+// Pure integer strings go straight to BigInt to avoid float precision loss.
+const toBigInt = (v: unknown): bigint | null => {
   if (isEmpty(v)) return null;
   const s = String(v).replace(/,/g, '').trim();
-  return Number.isFinite(Number(s)) ? new Prisma.Decimal(s) : null;
+  if (/^-?\d+$/.test(s)) return BigInt(s);
+  const n = Number(s);
+  return Number.isFinite(n) ? BigInt(Math.round(n)) : null;
 };
 
 const toDate = (v: unknown): Date | null => {
@@ -111,8 +115,8 @@ const CONFIG: Record<string, ImportConfig> = {
     required: () => [],
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
-      saldo_ar: toDecimal(r.saldo_ar),
-      ovd_eom: toDecimal(r.ovd_eom),
+      saldo_ar: toBigInt(r.saldo_ar),
+      ovd_eom: toBigInt(r.ovd_eom),
       no_aggr: toStr(r.no_aggr),
       angke: toInt(r.angke),
       file_name: c.fileName
@@ -124,8 +128,8 @@ const CONFIG: Record<string, ImportConfig> = {
     required: () => [],
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
-      saldo_ar: toDecimal(r.saldo_ar),
-      ovd_eom: toDecimal(r.ovd_eom),
+      saldo_ar: toBigInt(r.saldo_ar),
+      ovd_eom: toBigInt(r.ovd_eom),
       no_aggr: toStr(r.no_aggr),
       angke: toInt(r.angke),
       // column in file wins, otherwise fall back to request body
@@ -139,8 +143,8 @@ const CONFIG: Record<string, ImportConfig> = {
     required: () => [],
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
-      saldo_ar: toDecimal(r.saldo_ar),
-      ovd_eom: toDecimal(r.ovd_eom),
+      saldo_ar: toBigInt(r.saldo_ar),
+      ovd_eom: toBigInt(r.ovd_eom),
       no_aggr: toStr(r.no_aggr),
       angke: toInt(r.angke),
       id_mst_wilayah: toInt(r.id_mst_wilayah) ?? c.idWilayah,
