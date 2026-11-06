@@ -40,6 +40,7 @@ export type Ascii_skMinAggregateOutputType = {
   remo: string | null
   date: Date | null
   no_aggr: string | null
+  is_success: boolean | null
   file_name: string | null
 }
 
@@ -49,6 +50,7 @@ export type Ascii_skMaxAggregateOutputType = {
   remo: string | null
   date: Date | null
   no_aggr: string | null
+  is_success: boolean | null
   file_name: string | null
 }
 
@@ -58,6 +60,7 @@ export type Ascii_skCountAggregateOutputType = {
   remo: number
   date: number
   no_aggr: number
+  is_success: number
   file_name: number
   _all: number
 }
@@ -77,6 +80,7 @@ export type Ascii_skMinAggregateInputType = {
   remo?: true
   date?: true
   no_aggr?: true
+  is_success?: true
   file_name?: true
 }
 
@@ -86,6 +90,7 @@ export type Ascii_skMaxAggregateInputType = {
   remo?: true
   date?: true
   no_aggr?: true
+  is_success?: true
   file_name?: true
 }
 
@@ -95,6 +100,7 @@ export type Ascii_skCountAggregateInputType = {
   remo?: true
   date?: true
   no_aggr?: true
+  is_success?: true
   file_name?: true
   _all?: true
 }
@@ -191,6 +197,7 @@ export type Ascii_skGroupByOutputType = {
   remo: string | null
   date: Date | null
   no_aggr: string | null
+  is_success: boolean | null
   file_name: string
   _count: Ascii_skCountAggregateOutputType | null
   _avg: Ascii_skAvgAggregateOutputType | null
@@ -223,6 +230,7 @@ export type ascii_skWhereInput = {
   remo?: Prisma.StringNullableFilter<"ascii_sk"> | string | null
   date?: Prisma.DateTimeNullableFilter<"ascii_sk"> | Date | string | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_sk"> | string | null
+  is_success?: Prisma.BoolNullableFilter<"ascii_sk"> | boolean | null
   file_name?: Prisma.StringFilter<"ascii_sk"> | string
 }
 
@@ -232,6 +240,7 @@ export type ascii_skOrderByWithRelationInput = {
   remo?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrderInput | Prisma.SortOrder
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
+  is_success?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -244,6 +253,7 @@ export type ascii_skWhereUniqueInput = Prisma.AtLeast<{
   remo?: Prisma.StringNullableFilter<"ascii_sk"> | string | null
   date?: Prisma.DateTimeNullableFilter<"ascii_sk"> | Date | string | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_sk"> | string | null
+  is_success?: Prisma.BoolNullableFilter<"ascii_sk"> | boolean | null
   file_name?: Prisma.StringFilter<"ascii_sk"> | string
 }, "id">
 
@@ -253,6 +263,7 @@ export type ascii_skOrderByWithAggregationInput = {
   remo?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrderInput | Prisma.SortOrder
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
+  is_success?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
   _count?: Prisma.ascii_skCountOrderByAggregateInput
   _avg?: Prisma.ascii_skAvgOrderByAggregateInput
@@ -270,6 +281,7 @@ export type ascii_skScalarWhereWithAggregatesInput = {
   remo?: Prisma.StringNullableWithAggregatesFilter<"ascii_sk"> | string | null
   date?: Prisma.DateTimeNullableWithAggregatesFilter<"ascii_sk"> | Date | string | null
   no_aggr?: Prisma.StringNullableWithAggregatesFilter<"ascii_sk"> | string | null
+  is_success?: Prisma.BoolNullableWithAggregatesFilter<"ascii_sk"> | boolean | null
   file_name?: Prisma.StringWithAggregatesFilter<"ascii_sk"> | string
 }
 
@@ -278,6 +290,7 @@ export type ascii_skCreateInput = {
   remo?: string | null
   date?: Date | string | null
   no_aggr?: string | null
+  is_success?: boolean | null
   file_name: string
 }
 
@@ -287,6 +300,7 @@ export type ascii_skUncheckedCreateInput = {
   remo?: string | null
   date?: Date | string | null
   no_aggr?: string | null
+  is_success?: boolean | null
   file_name: string
 }
 
@@ -295,6 +309,7 @@ export type ascii_skUpdateInput = {
   remo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_success?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -304,6 +319,7 @@ export type ascii_skUncheckedUpdateInput = {
   remo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_success?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -313,6 +329,7 @@ export type ascii_skCreateManyInput = {
   remo?: string | null
   date?: Date | string | null
   no_aggr?: string | null
+  is_success?: boolean | null
   file_name: string
 }
 
@@ -321,6 +338,7 @@ export type ascii_skUpdateManyMutationInput = {
   remo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_success?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -330,6 +348,7 @@ export type ascii_skUncheckedUpdateManyInput = {
   remo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  is_success?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -339,6 +358,7 @@ export type ascii_skCountOrderByAggregateInput = {
   remo?: Prisma.SortOrder
   date?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
+  is_success?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -352,6 +372,7 @@ export type ascii_skMaxOrderByAggregateInput = {
   remo?: Prisma.SortOrder
   date?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
+  is_success?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -361,11 +382,16 @@ export type ascii_skMinOrderByAggregateInput = {
   remo?: Prisma.SortOrder
   date?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
+  is_success?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
 export type ascii_skSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+}
+
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
 }
 
 
@@ -376,6 +402,7 @@ export type ascii_skSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   remo?: boolean
   date?: boolean
   no_aggr?: boolean
+  is_success?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_sk"]>
 
@@ -385,6 +412,7 @@ export type ascii_skSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   remo?: boolean
   date?: boolean
   no_aggr?: boolean
+  is_success?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_sk"]>
 
@@ -394,6 +422,7 @@ export type ascii_skSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   remo?: boolean
   date?: boolean
   no_aggr?: boolean
+  is_success?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_sk"]>
 
@@ -403,10 +432,11 @@ export type ascii_skSelectScalar = {
   remo?: boolean
   date?: boolean
   no_aggr?: boolean
+  is_success?: boolean
   file_name?: boolean
 }
 
-export type ascii_skOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "peojf" | "remo" | "date" | "no_aggr" | "file_name", ExtArgs["result"]["ascii_sk"]>
+export type ascii_skOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "peojf" | "remo" | "date" | "no_aggr" | "is_success" | "file_name", ExtArgs["result"]["ascii_sk"]>
 
 export type $ascii_skPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ascii_sk"
@@ -417,6 +447,7 @@ export type $ascii_skPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     remo: string | null
     date: Date | null
     no_aggr: string | null
+    is_success: boolean | null
     file_name: string
   }, ExtArgs["result"]["ascii_sk"]>
   composites: {}
@@ -846,6 +877,7 @@ export interface ascii_skFieldRefs {
   readonly remo: Prisma.FieldRef<"ascii_sk", 'String'>
   readonly date: Prisma.FieldRef<"ascii_sk", 'DateTime'>
   readonly no_aggr: Prisma.FieldRef<"ascii_sk", 'String'>
+  readonly is_success: Prisma.FieldRef<"ascii_sk", 'Boolean'>
   readonly file_name: Prisma.FieldRef<"ascii_sk", 'String'>
 }
     

@@ -49,6 +49,7 @@ export type Ascii_aging_monthlyMinAggregateOutputType = {
   ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
+  snapshot_date: Date | null
   id_mst_wilayah: number | null
   file_name: string | null
 }
@@ -60,6 +61,7 @@ export type Ascii_aging_monthlyMaxAggregateOutputType = {
   ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
+  snapshot_date: Date | null
   id_mst_wilayah: number | null
   file_name: string | null
 }
@@ -71,6 +73,7 @@ export type Ascii_aging_monthlyCountAggregateOutputType = {
   ovd_eom: number
   no_aggr: number
   angke: number
+  snapshot_date: number
   id_mst_wilayah: number
   file_name: number
   _all: number
@@ -100,6 +103,7 @@ export type Ascii_aging_monthlyMinAggregateInputType = {
   ovd_eom?: true
   no_aggr?: true
   angke?: true
+  snapshot_date?: true
   id_mst_wilayah?: true
   file_name?: true
 }
@@ -111,6 +115,7 @@ export type Ascii_aging_monthlyMaxAggregateInputType = {
   ovd_eom?: true
   no_aggr?: true
   angke?: true
+  snapshot_date?: true
   id_mst_wilayah?: true
   file_name?: true
 }
@@ -122,6 +127,7 @@ export type Ascii_aging_monthlyCountAggregateInputType = {
   ovd_eom?: true
   no_aggr?: true
   angke?: true
+  snapshot_date?: true
   id_mst_wilayah?: true
   file_name?: true
   _all?: true
@@ -220,6 +226,7 @@ export type Ascii_aging_monthlyGroupByOutputType = {
   ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
+  snapshot_date: Date | null
   id_mst_wilayah: number | null
   file_name: string
   _count: Ascii_aging_monthlyCountAggregateOutputType | null
@@ -254,6 +261,7 @@ export type ascii_aging_monthlyWhereInput = {
   ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging_monthly"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_monthly"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
+  snapshot_date?: Prisma.DateTimeNullableFilter<"ascii_aging_monthly"> | Date | string | null
   id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
   file_name?: Prisma.StringFilter<"ascii_aging_monthly"> | string
 }
@@ -265,6 +273,7 @@ export type ascii_aging_monthlyOrderByWithRelationInput = {
   ovd_eom?: Prisma.SortOrderInput | Prisma.SortOrder
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
   angke?: Prisma.SortOrderInput | Prisma.SortOrder
+  snapshot_date?: Prisma.SortOrderInput | Prisma.SortOrder
   id_mst_wilayah?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -279,6 +288,7 @@ export type ascii_aging_monthlyWhereUniqueInput = Prisma.AtLeast<{
   ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging_monthly"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_monthly"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
+  snapshot_date?: Prisma.DateTimeNullableFilter<"ascii_aging_monthly"> | Date | string | null
   id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
   file_name?: Prisma.StringFilter<"ascii_aging_monthly"> | string
 }, "id">
@@ -290,6 +300,7 @@ export type ascii_aging_monthlyOrderByWithAggregationInput = {
   ovd_eom?: Prisma.SortOrderInput | Prisma.SortOrder
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
   angke?: Prisma.SortOrderInput | Prisma.SortOrder
+  snapshot_date?: Prisma.SortOrderInput | Prisma.SortOrder
   id_mst_wilayah?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
   _count?: Prisma.ascii_aging_monthlyCountOrderByAggregateInput
@@ -309,6 +320,7 @@ export type ascii_aging_monthlyScalarWhereWithAggregatesInput = {
   ovd_eom?: Prisma.BigIntNullableWithAggregatesFilter<"ascii_aging_monthly"> | bigint | number | null
   no_aggr?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_monthly"> | string | null
   angke?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_monthly"> | number | null
+  snapshot_date?: Prisma.DateTimeNullableWithAggregatesFilter<"ascii_aging_monthly"> | Date | string | null
   id_mst_wilayah?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_monthly"> | number | null
   file_name?: Prisma.StringWithAggregatesFilter<"ascii_aging_monthly"> | string
 }
@@ -319,6 +331,7 @@ export type ascii_aging_monthlyCreateInput = {
   ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
+  snapshot_date?: Date | string | null
   id_mst_wilayah?: number | null
   file_name: string
 }
@@ -330,6 +343,7 @@ export type ascii_aging_monthlyUncheckedCreateInput = {
   ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
+  snapshot_date?: Date | string | null
   id_mst_wilayah?: number | null
   file_name: string
 }
@@ -340,6 +354,7 @@ export type ascii_aging_monthlyUpdateInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -351,6 +366,7 @@ export type ascii_aging_monthlyUncheckedUpdateInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -362,6 +378,7 @@ export type ascii_aging_monthlyCreateManyInput = {
   ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
+  snapshot_date?: Date | string | null
   id_mst_wilayah?: number | null
   file_name: string
 }
@@ -372,6 +389,7 @@ export type ascii_aging_monthlyUpdateManyMutationInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -383,6 +401,7 @@ export type ascii_aging_monthlyUncheckedUpdateManyInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -394,6 +413,7 @@ export type ascii_aging_monthlyCountOrderByAggregateInput = {
   ovd_eom?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
+  snapshot_date?: Prisma.SortOrder
   id_mst_wilayah?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -413,6 +433,7 @@ export type ascii_aging_monthlyMaxOrderByAggregateInput = {
   ovd_eom?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
+  snapshot_date?: Prisma.SortOrder
   id_mst_wilayah?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -424,6 +445,7 @@ export type ascii_aging_monthlyMinOrderByAggregateInput = {
   ovd_eom?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
+  snapshot_date?: Prisma.SortOrder
   id_mst_wilayah?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -445,6 +467,7 @@ export type ascii_aging_monthlySelect<ExtArgs extends runtime.Types.Extensions.I
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
+  snapshot_date?: boolean
   id_mst_wilayah?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_monthly"]>
@@ -456,6 +479,7 @@ export type ascii_aging_monthlySelectCreateManyAndReturn<ExtArgs extends runtime
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
+  snapshot_date?: boolean
   id_mst_wilayah?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_monthly"]>
@@ -467,6 +491,7 @@ export type ascii_aging_monthlySelectUpdateManyAndReturn<ExtArgs extends runtime
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
+  snapshot_date?: boolean
   id_mst_wilayah?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_monthly"]>
@@ -478,11 +503,12 @@ export type ascii_aging_monthlySelectScalar = {
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
+  snapshot_date?: boolean
   id_mst_wilayah?: boolean
   file_name?: boolean
 }
 
-export type ascii_aging_monthlyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cust_name" | "saldo_ar" | "ovd_eom" | "no_aggr" | "angke" | "id_mst_wilayah" | "file_name", ExtArgs["result"]["ascii_aging_monthly"]>
+export type ascii_aging_monthlyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cust_name" | "saldo_ar" | "ovd_eom" | "no_aggr" | "angke" | "snapshot_date" | "id_mst_wilayah" | "file_name", ExtArgs["result"]["ascii_aging_monthly"]>
 
 export type $ascii_aging_monthlyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ascii_aging_monthly"
@@ -494,6 +520,7 @@ export type $ascii_aging_monthlyPayload<ExtArgs extends runtime.Types.Extensions
     ovd_eom: bigint | null
     no_aggr: string | null
     angke: number | null
+    snapshot_date: Date | null
     id_mst_wilayah: number | null
     file_name: string
   }, ExtArgs["result"]["ascii_aging_monthly"]>
@@ -925,6 +952,7 @@ export interface ascii_aging_monthlyFieldRefs {
   readonly ovd_eom: Prisma.FieldRef<"ascii_aging_monthly", 'BigInt'>
   readonly no_aggr: Prisma.FieldRef<"ascii_aging_monthly", 'String'>
   readonly angke: Prisma.FieldRef<"ascii_aging_monthly", 'Int'>
+  readonly snapshot_date: Prisma.FieldRef<"ascii_aging_monthly", 'DateTime'>
   readonly id_mst_wilayah: Prisma.FieldRef<"ascii_aging_monthly", 'Int'>
   readonly file_name: Prisma.FieldRef<"ascii_aging_monthly", 'String'>
 }

@@ -3,8 +3,6 @@ import { Response, Router, Request } from 'express';
 import { Prisma } from '../generated/prisma/client';
 import prisma from '../prisma';
 
-const router = Router();
-
 const WINDOW_DAYS = 8;
 const WIB_OFFSET_MS = 7 * 60 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
