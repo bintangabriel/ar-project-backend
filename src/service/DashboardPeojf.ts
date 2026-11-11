@@ -67,7 +67,8 @@ export async function getDashboardData(req: Request, res: Response) {
     }
 
     const range = monthRangeWIB(period);
-    if (!range) return res.status(400).json({ error: 'period must be YYYY-MM' });
+    if (!range)    return res.status(400).json({ error: { message: 'period must be YYYY-MM', status: 400 } });
+
 
     const cutoff = new Date(startOfTodayWIB().getTime() - WINDOW_DAYS * DAY_MS);
 
@@ -114,8 +115,6 @@ export async function getDashboardData(req: Request, res: Response) {
     res.json({ summary, rows, periods, areas, peojfOptions });
   } catch (e) {
     console.error('[sk/dashboard]', e);
-    res.status(500).json({ error: 'internal error' });
+   res.status(500).json({ error: { message: 'Internal error', status: 500 } });
   }
 };
-
-export default router;
