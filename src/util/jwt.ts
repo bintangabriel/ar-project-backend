@@ -62,7 +62,7 @@ export const signJWT = (payload: Record<string, any>, opts: SignOptions = {}): s
 
 const getSecretOrPrivateKey = (): Secret => {
   const secret = process.env.JWT_SECRET;
-  const privateKey = PRIVATE_KEY_PATH ? readFileSync(PRIVATE_KEY_PATH) : null
+  const privateKey = PRIVATE_KEY_PATH ? readFileSync(PRIVATE_KEY_PATH) : process.env.PRIVATE_KEY?.replace(/\\n/g, '\n');  
   const secretOrKey = privateKey ? privateKey : secret
   if (!secretOrKey) {
     throw new ARError('JWT secret or private key not found', {
