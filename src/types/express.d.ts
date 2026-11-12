@@ -1,4 +1,4 @@
-import { user, user_session } from '@prisma/client'
+import type { user, user_session } from '@prisma/client'
 
 declare global {
   namespace Express {

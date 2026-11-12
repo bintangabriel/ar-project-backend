@@ -1,3 +1,5 @@
+/// <reference path="../types/express.d.ts" />
+
 import { ARError } from '../util/error'
 import { NextFunction, RequestHandler, Request, Response } from "express";
 import { UserJWTData, verifyJWT } from '../util/jwt';
