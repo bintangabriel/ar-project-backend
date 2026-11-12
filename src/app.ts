@@ -23,7 +23,7 @@ app.use(
 app.get('/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Excel Upload API is running'
+    message: 'AR Project Backend is running'
   });
 });
 

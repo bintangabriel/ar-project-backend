@@ -63,7 +63,8 @@ export const ModelName = {
   ascii_aging: 'ascii_aging',
   ascii_aging_monthly: 'ascii_aging_monthly',
   ascii_aging_daily: 'ascii_aging_daily',
-  mst_file: 'mst_file'
+  mst_file: 'mst_file',
+  aging_daily_summary: 'aging_daily_summary'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -253,6 +254,21 @@ export const Mst_fileScalarFieldEnum = {
 } as const
 
 export type Mst_fileScalarFieldEnum = (typeof Mst_fileScalarFieldEnum)[keyof typeof Mst_fileScalarFieldEnum]
+
+
+export const Aging_daily_summaryScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  bucket: 'bucket',
+  threshold: 'threshold',
+  osa_total: 'osa_total',
+  am: 'am',
+  bal: 'bal',
+  pen: 'pen',
+  computed_at: 'computed_at'
+} as const
+
+export type Aging_daily_summaryScalarFieldEnum = (typeof Aging_daily_summaryScalarFieldEnum)[keyof typeof Aging_daily_summaryScalarFieldEnum]
 
 
 export const SortOrder = {

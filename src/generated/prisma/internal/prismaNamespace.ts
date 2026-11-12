@@ -409,7 +409,8 @@ export const ModelName = {
   ascii_aging: 'ascii_aging',
   ascii_aging_monthly: 'ascii_aging_monthly',
   ascii_aging_daily: 'ascii_aging_daily',
-  mst_file: 'mst_file'
+  mst_file: 'mst_file',
+  aging_daily_summary: 'aging_daily_summary'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -425,7 +426,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "importedData" | "user" | "user_otp" | "temp_user" | "session_token" | "user_session" | "role" | "ascii_sk" | "ascii_cr" | "ascii_aging" | "ascii_aging_monthly" | "ascii_aging_daily" | "mst_file"
+    modelProps: "importedData" | "user" | "user_otp" | "temp_user" | "session_token" | "user_session" | "role" | "ascii_sk" | "ascii_cr" | "ascii_aging" | "ascii_aging_monthly" | "ascii_aging_daily" | "mst_file" | "aging_daily_summary"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1391,6 +1392,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    aging_daily_summary: {
+      payload: Prisma.$aging_daily_summaryPayload<ExtArgs>
+      fields: Prisma.aging_daily_summaryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.aging_daily_summaryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.aging_daily_summaryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>
+        }
+        findFirst: {
+          args: Prisma.aging_daily_summaryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.aging_daily_summaryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>
+        }
+        findMany: {
+          args: Prisma.aging_daily_summaryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>[]
+        }
+        create: {
+          args: Prisma.aging_daily_summaryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>
+        }
+        createMany: {
+          args: Prisma.aging_daily_summaryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.aging_daily_summaryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>[]
+        }
+        delete: {
+          args: Prisma.aging_daily_summaryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>
+        }
+        update: {
+          args: Prisma.aging_daily_summaryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>
+        }
+        deleteMany: {
+          args: Prisma.aging_daily_summaryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.aging_daily_summaryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.aging_daily_summaryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>[]
+        }
+        upsert: {
+          args: Prisma.aging_daily_summaryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aging_daily_summaryPayload>
+        }
+        aggregate: {
+          args: Prisma.Aging_daily_summaryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAging_daily_summary>
+        }
+        groupBy: {
+          args: Prisma.aging_daily_summaryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Aging_daily_summaryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.aging_daily_summaryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Aging_daily_summaryCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1601,6 +1676,21 @@ export const Mst_fileScalarFieldEnum = {
 } as const
 
 export type Mst_fileScalarFieldEnum = (typeof Mst_fileScalarFieldEnum)[keyof typeof Mst_fileScalarFieldEnum]
+
+
+export const Aging_daily_summaryScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  bucket: 'bucket',
+  threshold: 'threshold',
+  osa_total: 'osa_total',
+  am: 'am',
+  bal: 'bal',
+  pen: 'pen',
+  computed_at: 'computed_at'
+} as const
+
+export type Aging_daily_summaryScalarFieldEnum = (typeof Aging_daily_summaryScalarFieldEnum)[keyof typeof Aging_daily_summaryScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1918,6 +2008,7 @@ export type GlobalOmitConfig = {
   ascii_aging_monthly?: Prisma.ascii_aging_monthlyOmit
   ascii_aging_daily?: Prisma.ascii_aging_dailyOmit
   mst_file?: Prisma.mst_fileOmit
+  aging_daily_summary?: Prisma.aging_daily_summaryOmit
 }
 
 /* Types for Logging */

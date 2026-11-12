@@ -104,3 +104,8 @@ export type ascii_aging_daily = Prisma.ascii_aging_dailyModel
  * 
  */
 export type mst_file = Prisma.mst_fileModel
+/**
+ * Model aging_daily_summary
+ * 
+ */
+export type aging_daily_summary = Prisma.aging_daily_summaryModel

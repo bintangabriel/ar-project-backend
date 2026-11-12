@@ -8,6 +8,7 @@ import { getDashboardOverviewRoute } from '../controllers/dashboard';
 import { getDashboardData } from '../service/DashboardPeojf';
 import { FormOptions } from '../util/type';
 import { getFormOptions, Recommendation } from '../controllers/recommendation';
+import { getAgingTrendRoute, refreshAgingCron } from '../controllers/AgingTrendRoute';
 
 const router = Router();
 
@@ -23,5 +24,8 @@ router.post(
 
 // GET /recommendation/options -> dropdown values for the form
 router.get("/recommendation/options", UserAuth(), getFormOptions);
+
+router.get('/aging/trend', UserAuth(), getAgingTrendRoute)
+router.get("/aging/refresh", refreshAgingCron);
 
 export default router;

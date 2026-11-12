@@ -178,3 +178,19 @@ model mst_file {
   type    String?
   created_at  DateTime
 }
+
+model aging_daily_summary {
+  id          Int      @id @default(autoincrement())
+  date        DateTime @db.Date
+  bucket      String // B1 | B2 | B3 | POWO
+  threshold   Int // ovd_eom > threshold
+  osa_total   BigInt // sum(saldo_ar) of the whole day
+  am          BigInt // sum(saldo_ar) where ovd_eom > threshold
+  bal         Float // am / osa_total * 100 (percent)
+  pen         BigInt? // am(date + 1) - am(date). null until the next day exists
+  computed_at DateTime @default(now()) @updatedAt
+
+  @@unique([date, bucket])
+  @@index([date])
+  @@map("aging_daily_summary")
+}
