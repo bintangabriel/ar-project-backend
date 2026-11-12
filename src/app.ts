@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // frontend local
+    origin: "http://localhost:3000",
     credentials: true, // only if you use cookies
   })
 );
