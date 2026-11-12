@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ImportedData {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+
+  @@map("imported_data")
+}
+
+model user {
+  id                String                @unique @db.VarChar @id
+  name                     String                 @db.VarChar
+  email                    String?                @db.VarChar
+  password                 String?                @db.VarChar
+  /// phone number, default null
+  phone                    String?                @db.VarChar
+  /// wa number, default null
+  whatsapp_number          String?                @db.VarChar
+  /// default `Asia/Jakarta`
+  timezone                 String?                @default("Asia/Jakarta") @db.VarChar
+  /// emailVerificationToken, null if isVerified = true. Used for checking email verification
+  email_verification_token String?                @db.VarChar
+  /// user's profile picture in URL, default null
+  profile_picture_url      String?                @db.VarChar
+  last_login               DateTime?              @db.Timestamptz(3)
+  created_at               DateTime               @default(now()) @db.Timestamptz(3)
+  updated_at               DateTime?              @default(now()) @db.Timestamptz(3)
+  deleted_at               DateTime?              @db.Timestamptz(3)
+  /// used for verifiying email, default false
+  is_email_verified        Boolean                @default(false)
+  session_token            session_token[]
+  user_otp                 user_otp[]
+  sessions                 user_session[]
+  role_id                  String?
+  role                     role?                  @relation(fields: [role_id], references: [id])
+
+  @@index([email])
+  @@index([email(ops: raw("gin_trgm_ops"))], map: "email_trgm_idx", type: Gin)
+  @@index([whatsapp_number])
+  @@index([id])
+}
+
+model user_otp {
+  id              Int        @id @default(autoincrement())
+  whatsapp_number String     @db.VarChar
+  user_id         String?
+  temp_user_id    Int?
+  otp             String     @db.VarChar
+  created_at      DateTime   @default(now()) @db.Timestamptz(3)
+  expired_at      DateTime?  @db.Timestamptz(3)
+  verified_at     DateTime?  @db.Timestamptz(3)
+  resend_token    String?    @db.VarChar
+  retries         Int?
+  allow_resend_at DateTime?  @db.Timestamptz(3)
+
+  temp_user       temp_user? @relation(fields: [temp_user_id], references: [id])
+  user            user?      @relation(fields: [user_id], references: [id])
+}
+
+model temp_user {
+  id              Int        @id @default(autoincrement())
+  name            String     @db.VarChar
+  whatsapp_number String?    @db.VarChar
+  user_agent      String?    @db.VarChar
+  timezone        String?    @default("Asia/Jakarta") @db.VarChar
+  created_at      DateTime   @default(now()) @db.Timestamptz(3)
+  deleted_at      DateTime?  @db.Timestamptz(3)
+  register_ref_id String?    @db.VarChar
+  user_otp        user_otp[]
+}
+
+model session_token {
+  id          Int       @id @default(autoincrement())
+  user_id     String?
+  token       String    @db.VarChar
+  created_at  DateTime  @default(now()) @db.Timestamptz(3)
+  expired_at  DateTime? @db.Timestamptz(3)
+  accessed_at DateTime? @db.Timestamptz(3)
+  user        user?     @relation(fields: [user_id], references: [id])
+}
+
+model user_session {
+  id            String         @id @db.VarChar
+  created_at    DateTime       @default(now()) @db.Timestamptz(3)
+  expired_at    DateTime       @db.Timestamptz(3)
+  user_agent    Json?
+  ip            String?        @db.VarChar
+  data          Json?
+  user_id       String
+  user          user           @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+}
+
+model role {
+  id            String         @id @db.VarChar
+  name          String                 @db.VarChar
+  user_role     user[]
+}
+
+model ascii_sk {
+  id        Int      @id @default(autoincrement())
+  peojf     String?
+  remo      String?
+  date      DateTime?
+  no_aggr   String?
+  is_success Boolean?
+  file_name String
+
+  @@index([no_aggr, date])
+}
+
+model ascii_cr {
+  id        Int      @id @default(autoincrement())
+  peojf     String?
+  remo      String?
+  date      DateTime?
+  no_aggr   String?
+  file_name String
+
+  @@index([no_aggr, date])
+}
+
+model ascii_aging {
+  id        Int      @id @default(autoincrement())
+  cust_name String?
+  saldo_ar  BigInt?
+  ovd_eom   BigInt?
+  no_aggr   String?
+  angke     Int?
+  file_name String
+
+  @@map("ascii_aging")
+}
+
+model ascii_aging_monthly {
+  id             Int      @id @default(autoincrement())
+  cust_name      String?
+  saldo_ar       BigInt?
+  ovd_eom        BigInt?
+  no_aggr        String?
+  angke          Int?
+  snapshot_date DateTime?
+  id_mst_wilayah Int?
+  file_name      String
+
+  @@index([no_aggr, snapshot_date])
+  @@map("ascii_aging_monthly")
+}
+
+model ascii_aging_daily {
+  id             Int      @id @default(autoincrement())
+  cust_name      String?
+  saldo_ar       BigInt?
+  ovd_eom        BigInt?
+  no_aggr        String?
+  angke          Int?
+  id_mst_wilayah Int?
+  date           DateTime?
+  file_name      String
+
+  @@map("ascii_aging_daily")
+  @@index([no_aggr, date])
+}
+
+model mst_file {
+  id      Int      @id @default(autoincrement())
+  name    String   
+  size    Decimal
+  type    String?
+  created_at  DateTime
+}
+
+model aging_daily_summary {
+  id          Int      @id @default(autoincrement())
+  date        DateTime @db.Date
+  bucket      String // B1 | B2 | B3 | POWO
+  threshold   Int // ovd_eom > threshold
+  osa_total   BigInt // sum(saldo_ar) of the whole day
+  am          BigInt // sum(saldo_ar) where ovd_eom > threshold
+  bal         Float // am / osa_total * 100 (percent)
+  pen         BigInt? // am(date + 1) - am(date). null until the next day exists
+  computed_at DateTime @default(now()) @updatedAt
+
+  @@unique([date, bucket])
+  @@index([date])
+  @@map("aging_daily_summary")
+}
