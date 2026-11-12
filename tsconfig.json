@@ -9,7 +9,6 @@
     // See also https://aka.ms/tsconfig/module
     "target": "ES2022",
     "module": "node16",
-    "types": [],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -45,6 +44,9 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }
