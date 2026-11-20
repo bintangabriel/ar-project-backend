@@ -1645,7 +1645,7 @@ export const Ascii_aging_monthlyScalarFieldEnum = {
   no_aggr: 'no_aggr',
   angke: 'angke',
   snapshot_date: 'snapshot_date',
-  id_mst_wilayah: 'id_mst_wilayah',
+  branch: 'branch',
   file_name: 'file_name'
 } as const
 
@@ -1659,7 +1659,7 @@ export const Ascii_aging_dailyScalarFieldEnum = {
   ovd_eom: 'ovd_eom',
   no_aggr: 'no_aggr',
   angke: 'angke',
-  id_mst_wilayah: 'id_mst_wilayah',
+  branch: 'branch',
   date: 'date',
   file_name: 'file_name'
 } as const

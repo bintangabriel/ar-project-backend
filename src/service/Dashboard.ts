@@ -66,9 +66,7 @@ const pct = (part: number, total: number) =>
 
 const cabangFilter = (cabang?: string) => {
   if (!cabang || cabang.toLowerCase() === "all") return {};
-  const id = Number(cabang);
-  if (!Number.isInteger(id)) return {};
-  return { id_mst_wilayah: id };
+  return { branch: cabang };
 };
 
 /**

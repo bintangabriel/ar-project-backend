@@ -20,6 +20,15 @@ const toInt = (v: unknown): number | null => {
   return Number.isFinite(n) ? Math.trunc(n) : null;
 };
 
+const extractWilayah = (v: unknown): string | null => {
+  if (isEmpty(v)) return null;
+
+  return String(v)
+    .trim()
+    .replace(/^\d+\s*\.\s*/, '')
+    .trim();
+};
+
 // BigInt: Excel gives numbers (possibly with .0 or decimals), so round first.
 // Pure integer strings go straight to BigInt to avoid float precision loss.
 const toBigInt = (v: unknown): bigint | null => {
@@ -76,10 +85,10 @@ const toDate = (v: unknown): Date | null => {
 /* -------------------------------------------------------------------------- */
 
 type Row = Record<string, unknown>;
-type Mapper = (row: Row, ctx: {fileName: string; idWilayah: number | null; importDate: Date | null;}) => any;
+type Mapper = (row: Row, ctx: {fileName: string; idWilayah: string | null; importDate: Date | null;}) => any;
 
 interface ImportConfig {
-  required: (ctx: {idWilayah: number | null}) => string[];
+  required: (ctx: {idWilayah: string | null}) => string[];
   map: Mapper;
   insert: (data: any[]) => Promise<{count: number}>;
 }
@@ -129,11 +138,11 @@ const CONFIG: Record<string, ImportConfig> = {
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
       saldo_ar: toBigInt(r.saldo_ar),
-      ovd_eom: toBigInt(r.ovd_eom),
+      ovd_eom: toBigInt(r.overdue_eom),
       no_aggr: toStr(r.no_aggr),
       angke: toInt(r.angke),
       // column in file wins, otherwise fall back to request body
-      id_mst_wilayah: toInt(r.id_mst_wilayah) ?? c.idWilayah,
+      branch: extractWilayah(r.cab_2) ?? c.idWilayah,
       file_name: c.fileName
     }),
     insert: data => prisma.ascii_aging_monthly.createMany({data})
@@ -144,10 +153,10 @@ const CONFIG: Record<string, ImportConfig> = {
     map: (r, c) => ({
       cust_name: toStr(r.cust_name),
       saldo_ar: toBigInt(r.saldo_ar),
-      ovd_eom: toBigInt(r.ovd_eom),
+      ovd_eom: toBigInt(r.overdue_eom),
       no_aggr: toStr(r.no_aggr),
       angke: toInt(r.angke),
-      id_mst_wilayah: toInt(r.id_mst_wilayah) ?? c.idWilayah,
+      branch: extractWilayah(r.cab_2) ?? c.idWilayah,
       date: c.importDate,
       file_name: c.fileName
     }),
@@ -199,7 +208,7 @@ export const importFile = async (req: Request, res: Response): Promise<void> => 
     }
 
     const fileName = req.file.originalname;
-    const idWilayah = toInt(req.body.id_mst_wilayah);
+    const idWilayah = toStr(req.body.id_mst_wilayah);
 
     let importDate: Date | null = null;
 

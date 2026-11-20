@@ -31,7 +31,6 @@ export type Ascii_aging_monthlyAvgAggregateOutputType = {
   saldo_ar: number | null
   ovd_eom: number | null
   angke: number | null
-  id_mst_wilayah: number | null
 }
 
 export type Ascii_aging_monthlySumAggregateOutputType = {
@@ -39,7 +38,6 @@ export type Ascii_aging_monthlySumAggregateOutputType = {
   saldo_ar: bigint | null
   ovd_eom: bigint | null
   angke: number | null
-  id_mst_wilayah: number | null
 }
 
 export type Ascii_aging_monthlyMinAggregateOutputType = {
@@ -50,7 +48,7 @@ export type Ascii_aging_monthlyMinAggregateOutputType = {
   no_aggr: string | null
   angke: number | null
   snapshot_date: Date | null
-  id_mst_wilayah: number | null
+  branch: string | null
   file_name: string | null
 }
 
@@ -62,7 +60,7 @@ export type Ascii_aging_monthlyMaxAggregateOutputType = {
   no_aggr: string | null
   angke: number | null
   snapshot_date: Date | null
-  id_mst_wilayah: number | null
+  branch: string | null
   file_name: string | null
 }
 
@@ -74,7 +72,7 @@ export type Ascii_aging_monthlyCountAggregateOutputType = {
   no_aggr: number
   angke: number
   snapshot_date: number
-  id_mst_wilayah: number
+  branch: number
   file_name: number
   _all: number
 }
@@ -85,7 +83,6 @@ export type Ascii_aging_monthlyAvgAggregateInputType = {
   saldo_ar?: true
   ovd_eom?: true
   angke?: true
-  id_mst_wilayah?: true
 }
 
 export type Ascii_aging_monthlySumAggregateInputType = {
@@ -93,7 +90,6 @@ export type Ascii_aging_monthlySumAggregateInputType = {
   saldo_ar?: true
   ovd_eom?: true
   angke?: true
-  id_mst_wilayah?: true
 }
 
 export type Ascii_aging_monthlyMinAggregateInputType = {
@@ -104,7 +100,7 @@ export type Ascii_aging_monthlyMinAggregateInputType = {
   no_aggr?: true
   angke?: true
   snapshot_date?: true
-  id_mst_wilayah?: true
+  branch?: true
   file_name?: true
 }
 
@@ -116,7 +112,7 @@ export type Ascii_aging_monthlyMaxAggregateInputType = {
   no_aggr?: true
   angke?: true
   snapshot_date?: true
-  id_mst_wilayah?: true
+  branch?: true
   file_name?: true
 }
 
@@ -128,7 +124,7 @@ export type Ascii_aging_monthlyCountAggregateInputType = {
   no_aggr?: true
   angke?: true
   snapshot_date?: true
-  id_mst_wilayah?: true
+  branch?: true
   file_name?: true
   _all?: true
 }
@@ -227,7 +223,7 @@ export type Ascii_aging_monthlyGroupByOutputType = {
   no_aggr: string | null
   angke: number | null
   snapshot_date: Date | null
-  id_mst_wilayah: number | null
+  branch: string | null
   file_name: string
   _count: Ascii_aging_monthlyCountAggregateOutputType | null
   _avg: Ascii_aging_monthlyAvgAggregateOutputType | null
@@ -262,7 +258,7 @@ export type ascii_aging_monthlyWhereInput = {
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_monthly"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
   snapshot_date?: Prisma.DateTimeNullableFilter<"ascii_aging_monthly"> | Date | string | null
-  id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
+  branch?: Prisma.StringNullableFilter<"ascii_aging_monthly"> | string | null
   file_name?: Prisma.StringFilter<"ascii_aging_monthly"> | string
 }
 
@@ -274,7 +270,7 @@ export type ascii_aging_monthlyOrderByWithRelationInput = {
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
   angke?: Prisma.SortOrderInput | Prisma.SortOrder
   snapshot_date?: Prisma.SortOrderInput | Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrderInput | Prisma.SortOrder
+  branch?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -289,7 +285,7 @@ export type ascii_aging_monthlyWhereUniqueInput = Prisma.AtLeast<{
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_monthly"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
   snapshot_date?: Prisma.DateTimeNullableFilter<"ascii_aging_monthly"> | Date | string | null
-  id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_monthly"> | number | null
+  branch?: Prisma.StringNullableFilter<"ascii_aging_monthly"> | string | null
   file_name?: Prisma.StringFilter<"ascii_aging_monthly"> | string
 }, "id">
 
@@ -301,7 +297,7 @@ export type ascii_aging_monthlyOrderByWithAggregationInput = {
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
   angke?: Prisma.SortOrderInput | Prisma.SortOrder
   snapshot_date?: Prisma.SortOrderInput | Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrderInput | Prisma.SortOrder
+  branch?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
   _count?: Prisma.ascii_aging_monthlyCountOrderByAggregateInput
   _avg?: Prisma.ascii_aging_monthlyAvgOrderByAggregateInput
@@ -321,7 +317,7 @@ export type ascii_aging_monthlyScalarWhereWithAggregatesInput = {
   no_aggr?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_monthly"> | string | null
   angke?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_monthly"> | number | null
   snapshot_date?: Prisma.DateTimeNullableWithAggregatesFilter<"ascii_aging_monthly"> | Date | string | null
-  id_mst_wilayah?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_monthly"> | number | null
+  branch?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_monthly"> | string | null
   file_name?: Prisma.StringWithAggregatesFilter<"ascii_aging_monthly"> | string
 }
 
@@ -332,7 +328,7 @@ export type ascii_aging_monthlyCreateInput = {
   no_aggr?: string | null
   angke?: number | null
   snapshot_date?: Date | string | null
-  id_mst_wilayah?: number | null
+  branch?: string | null
   file_name: string
 }
 
@@ -344,7 +340,7 @@ export type ascii_aging_monthlyUncheckedCreateInput = {
   no_aggr?: string | null
   angke?: number | null
   snapshot_date?: Date | string | null
-  id_mst_wilayah?: number | null
+  branch?: string | null
   file_name: string
 }
 
@@ -355,7 +351,7 @@ export type ascii_aging_monthlyUpdateInput = {
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -367,7 +363,7 @@ export type ascii_aging_monthlyUncheckedUpdateInput = {
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -379,7 +375,7 @@ export type ascii_aging_monthlyCreateManyInput = {
   no_aggr?: string | null
   angke?: number | null
   snapshot_date?: Date | string | null
-  id_mst_wilayah?: number | null
+  branch?: string | null
   file_name: string
 }
 
@@ -390,7 +386,7 @@ export type ascii_aging_monthlyUpdateManyMutationInput = {
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -402,7 +398,7 @@ export type ascii_aging_monthlyUncheckedUpdateManyInput = {
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   snapshot_date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -414,7 +410,7 @@ export type ascii_aging_monthlyCountOrderByAggregateInput = {
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
   snapshot_date?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
+  branch?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -423,7 +419,6 @@ export type ascii_aging_monthlyAvgOrderByAggregateInput = {
   saldo_ar?: Prisma.SortOrder
   ovd_eom?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
 }
 
 export type ascii_aging_monthlyMaxOrderByAggregateInput = {
@@ -434,7 +429,7 @@ export type ascii_aging_monthlyMaxOrderByAggregateInput = {
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
   snapshot_date?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
+  branch?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -446,7 +441,7 @@ export type ascii_aging_monthlyMinOrderByAggregateInput = {
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
   snapshot_date?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
+  branch?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
 
@@ -455,7 +450,6 @@ export type ascii_aging_monthlySumOrderByAggregateInput = {
   saldo_ar?: Prisma.SortOrder
   ovd_eom?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
 }
 
 
@@ -468,7 +462,7 @@ export type ascii_aging_monthlySelect<ExtArgs extends runtime.Types.Extensions.I
   no_aggr?: boolean
   angke?: boolean
   snapshot_date?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_monthly"]>
 
@@ -480,7 +474,7 @@ export type ascii_aging_monthlySelectCreateManyAndReturn<ExtArgs extends runtime
   no_aggr?: boolean
   angke?: boolean
   snapshot_date?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_monthly"]>
 
@@ -492,7 +486,7 @@ export type ascii_aging_monthlySelectUpdateManyAndReturn<ExtArgs extends runtime
   no_aggr?: boolean
   angke?: boolean
   snapshot_date?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_monthly"]>
 
@@ -504,11 +498,11 @@ export type ascii_aging_monthlySelectScalar = {
   no_aggr?: boolean
   angke?: boolean
   snapshot_date?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   file_name?: boolean
 }
 
-export type ascii_aging_monthlyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cust_name" | "saldo_ar" | "ovd_eom" | "no_aggr" | "angke" | "snapshot_date" | "id_mst_wilayah" | "file_name", ExtArgs["result"]["ascii_aging_monthly"]>
+export type ascii_aging_monthlyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cust_name" | "saldo_ar" | "ovd_eom" | "no_aggr" | "angke" | "snapshot_date" | "branch" | "file_name", ExtArgs["result"]["ascii_aging_monthly"]>
 
 export type $ascii_aging_monthlyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ascii_aging_monthly"
@@ -521,7 +515,7 @@ export type $ascii_aging_monthlyPayload<ExtArgs extends runtime.Types.Extensions
     no_aggr: string | null
     angke: number | null
     snapshot_date: Date | null
-    id_mst_wilayah: number | null
+    branch: string | null
     file_name: string
   }, ExtArgs["result"]["ascii_aging_monthly"]>
   composites: {}
@@ -953,7 +947,7 @@ export interface ascii_aging_monthlyFieldRefs {
   readonly no_aggr: Prisma.FieldRef<"ascii_aging_monthly", 'String'>
   readonly angke: Prisma.FieldRef<"ascii_aging_monthly", 'Int'>
   readonly snapshot_date: Prisma.FieldRef<"ascii_aging_monthly", 'DateTime'>
-  readonly id_mst_wilayah: Prisma.FieldRef<"ascii_aging_monthly", 'Int'>
+  readonly branch: Prisma.FieldRef<"ascii_aging_monthly", 'String'>
   readonly file_name: Prisma.FieldRef<"ascii_aging_monthly", 'String'>
 }
     

@@ -31,7 +31,6 @@ export type Ascii_aging_dailyAvgAggregateOutputType = {
   saldo_ar: number | null
   ovd_eom: number | null
   angke: number | null
-  id_mst_wilayah: number | null
 }
 
 export type Ascii_aging_dailySumAggregateOutputType = {
@@ -39,7 +38,6 @@ export type Ascii_aging_dailySumAggregateOutputType = {
   saldo_ar: bigint | null
   ovd_eom: bigint | null
   angke: number | null
-  id_mst_wilayah: number | null
 }
 
 export type Ascii_aging_dailyMinAggregateOutputType = {
@@ -49,7 +47,7 @@ export type Ascii_aging_dailyMinAggregateOutputType = {
   ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
-  id_mst_wilayah: number | null
+  branch: string | null
   date: Date | null
   file_name: string | null
 }
@@ -61,7 +59,7 @@ export type Ascii_aging_dailyMaxAggregateOutputType = {
   ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
-  id_mst_wilayah: number | null
+  branch: string | null
   date: Date | null
   file_name: string | null
 }
@@ -73,7 +71,7 @@ export type Ascii_aging_dailyCountAggregateOutputType = {
   ovd_eom: number
   no_aggr: number
   angke: number
-  id_mst_wilayah: number
+  branch: number
   date: number
   file_name: number
   _all: number
@@ -85,7 +83,6 @@ export type Ascii_aging_dailyAvgAggregateInputType = {
   saldo_ar?: true
   ovd_eom?: true
   angke?: true
-  id_mst_wilayah?: true
 }
 
 export type Ascii_aging_dailySumAggregateInputType = {
@@ -93,7 +90,6 @@ export type Ascii_aging_dailySumAggregateInputType = {
   saldo_ar?: true
   ovd_eom?: true
   angke?: true
-  id_mst_wilayah?: true
 }
 
 export type Ascii_aging_dailyMinAggregateInputType = {
@@ -103,7 +99,7 @@ export type Ascii_aging_dailyMinAggregateInputType = {
   ovd_eom?: true
   no_aggr?: true
   angke?: true
-  id_mst_wilayah?: true
+  branch?: true
   date?: true
   file_name?: true
 }
@@ -115,7 +111,7 @@ export type Ascii_aging_dailyMaxAggregateInputType = {
   ovd_eom?: true
   no_aggr?: true
   angke?: true
-  id_mst_wilayah?: true
+  branch?: true
   date?: true
   file_name?: true
 }
@@ -127,7 +123,7 @@ export type Ascii_aging_dailyCountAggregateInputType = {
   ovd_eom?: true
   no_aggr?: true
   angke?: true
-  id_mst_wilayah?: true
+  branch?: true
   date?: true
   file_name?: true
   _all?: true
@@ -226,7 +222,7 @@ export type Ascii_aging_dailyGroupByOutputType = {
   ovd_eom: bigint | null
   no_aggr: string | null
   angke: number | null
-  id_mst_wilayah: number | null
+  branch: string | null
   date: Date | null
   file_name: string
   _count: Ascii_aging_dailyCountAggregateOutputType | null
@@ -261,7 +257,7 @@ export type ascii_aging_dailyWhereInput = {
   ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging_daily"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
-  id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
+  branch?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
   date?: Prisma.DateTimeNullableFilter<"ascii_aging_daily"> | Date | string | null
   file_name?: Prisma.StringFilter<"ascii_aging_daily"> | string
 }
@@ -273,7 +269,7 @@ export type ascii_aging_dailyOrderByWithRelationInput = {
   ovd_eom?: Prisma.SortOrderInput | Prisma.SortOrder
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
   angke?: Prisma.SortOrderInput | Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrderInput | Prisma.SortOrder
+  branch?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -288,7 +284,7 @@ export type ascii_aging_dailyWhereUniqueInput = Prisma.AtLeast<{
   ovd_eom?: Prisma.BigIntNullableFilter<"ascii_aging_daily"> | bigint | number | null
   no_aggr?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
   angke?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
-  id_mst_wilayah?: Prisma.IntNullableFilter<"ascii_aging_daily"> | number | null
+  branch?: Prisma.StringNullableFilter<"ascii_aging_daily"> | string | null
   date?: Prisma.DateTimeNullableFilter<"ascii_aging_daily"> | Date | string | null
   file_name?: Prisma.StringFilter<"ascii_aging_daily"> | string
 }, "id">
@@ -300,7 +296,7 @@ export type ascii_aging_dailyOrderByWithAggregationInput = {
   ovd_eom?: Prisma.SortOrderInput | Prisma.SortOrder
   no_aggr?: Prisma.SortOrderInput | Prisma.SortOrder
   angke?: Prisma.SortOrderInput | Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrderInput | Prisma.SortOrder
+  branch?: Prisma.SortOrderInput | Prisma.SortOrder
   date?: Prisma.SortOrderInput | Prisma.SortOrder
   file_name?: Prisma.SortOrder
   _count?: Prisma.ascii_aging_dailyCountOrderByAggregateInput
@@ -320,7 +316,7 @@ export type ascii_aging_dailyScalarWhereWithAggregatesInput = {
   ovd_eom?: Prisma.BigIntNullableWithAggregatesFilter<"ascii_aging_daily"> | bigint | number | null
   no_aggr?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_daily"> | string | null
   angke?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_daily"> | number | null
-  id_mst_wilayah?: Prisma.IntNullableWithAggregatesFilter<"ascii_aging_daily"> | number | null
+  branch?: Prisma.StringNullableWithAggregatesFilter<"ascii_aging_daily"> | string | null
   date?: Prisma.DateTimeNullableWithAggregatesFilter<"ascii_aging_daily"> | Date | string | null
   file_name?: Prisma.StringWithAggregatesFilter<"ascii_aging_daily"> | string
 }
@@ -331,7 +327,7 @@ export type ascii_aging_dailyCreateInput = {
   ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
-  id_mst_wilayah?: number | null
+  branch?: string | null
   date?: Date | string | null
   file_name: string
 }
@@ -343,7 +339,7 @@ export type ascii_aging_dailyUncheckedCreateInput = {
   ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
-  id_mst_wilayah?: number | null
+  branch?: string | null
   date?: Date | string | null
   file_name: string
 }
@@ -354,7 +350,7 @@ export type ascii_aging_dailyUpdateInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -366,7 +362,7 @@ export type ascii_aging_dailyUncheckedUpdateInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -378,7 +374,7 @@ export type ascii_aging_dailyCreateManyInput = {
   ovd_eom?: bigint | number | null
   no_aggr?: string | null
   angke?: number | null
-  id_mst_wilayah?: number | null
+  branch?: string | null
   date?: Date | string | null
   file_name: string
 }
@@ -389,7 +385,7 @@ export type ascii_aging_dailyUpdateManyMutationInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -401,7 +397,7 @@ export type ascii_aging_dailyUncheckedUpdateManyInput = {
   ovd_eom?: Prisma.NullableBigIntFieldUpdateOperationsInput | bigint | number | null
   no_aggr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   angke?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  id_mst_wilayah?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  branch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   date?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   file_name?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -413,7 +409,7 @@ export type ascii_aging_dailyCountOrderByAggregateInput = {
   ovd_eom?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
+  branch?: Prisma.SortOrder
   date?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -423,7 +419,6 @@ export type ascii_aging_dailyAvgOrderByAggregateInput = {
   saldo_ar?: Prisma.SortOrder
   ovd_eom?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
 }
 
 export type ascii_aging_dailyMaxOrderByAggregateInput = {
@@ -433,7 +428,7 @@ export type ascii_aging_dailyMaxOrderByAggregateInput = {
   ovd_eom?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
+  branch?: Prisma.SortOrder
   date?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -445,7 +440,7 @@ export type ascii_aging_dailyMinOrderByAggregateInput = {
   ovd_eom?: Prisma.SortOrder
   no_aggr?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
+  branch?: Prisma.SortOrder
   date?: Prisma.SortOrder
   file_name?: Prisma.SortOrder
 }
@@ -455,7 +450,6 @@ export type ascii_aging_dailySumOrderByAggregateInput = {
   saldo_ar?: Prisma.SortOrder
   ovd_eom?: Prisma.SortOrder
   angke?: Prisma.SortOrder
-  id_mst_wilayah?: Prisma.SortOrder
 }
 
 
@@ -467,7 +461,7 @@ export type ascii_aging_dailySelect<ExtArgs extends runtime.Types.Extensions.Int
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   date?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_daily"]>
@@ -479,7 +473,7 @@ export type ascii_aging_dailySelectCreateManyAndReturn<ExtArgs extends runtime.T
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   date?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_daily"]>
@@ -491,7 +485,7 @@ export type ascii_aging_dailySelectUpdateManyAndReturn<ExtArgs extends runtime.T
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   date?: boolean
   file_name?: boolean
 }, ExtArgs["result"]["ascii_aging_daily"]>
@@ -503,12 +497,12 @@ export type ascii_aging_dailySelectScalar = {
   ovd_eom?: boolean
   no_aggr?: boolean
   angke?: boolean
-  id_mst_wilayah?: boolean
+  branch?: boolean
   date?: boolean
   file_name?: boolean
 }
 
-export type ascii_aging_dailyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cust_name" | "saldo_ar" | "ovd_eom" | "no_aggr" | "angke" | "id_mst_wilayah" | "date" | "file_name", ExtArgs["result"]["ascii_aging_daily"]>
+export type ascii_aging_dailyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cust_name" | "saldo_ar" | "ovd_eom" | "no_aggr" | "angke" | "branch" | "date" | "file_name", ExtArgs["result"]["ascii_aging_daily"]>
 
 export type $ascii_aging_dailyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ascii_aging_daily"
@@ -520,7 +514,7 @@ export type $ascii_aging_dailyPayload<ExtArgs extends runtime.Types.Extensions.I
     ovd_eom: bigint | null
     no_aggr: string | null
     angke: number | null
-    id_mst_wilayah: number | null
+    branch: string | null
     date: Date | null
     file_name: string
   }, ExtArgs["result"]["ascii_aging_daily"]>
@@ -952,7 +946,7 @@ export interface ascii_aging_dailyFieldRefs {
   readonly ovd_eom: Prisma.FieldRef<"ascii_aging_daily", 'BigInt'>
   readonly no_aggr: Prisma.FieldRef<"ascii_aging_daily", 'String'>
   readonly angke: Prisma.FieldRef<"ascii_aging_daily", 'Int'>
-  readonly id_mst_wilayah: Prisma.FieldRef<"ascii_aging_daily", 'Int'>
+  readonly branch: Prisma.FieldRef<"ascii_aging_daily", 'String'>
   readonly date: Prisma.FieldRef<"ascii_aging_daily", 'DateTime'>
   readonly file_name: Prisma.FieldRef<"ascii_aging_daily", 'String'>
 }

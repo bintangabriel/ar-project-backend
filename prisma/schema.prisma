@@ -149,7 +149,7 @@ model ascii_aging_monthly {
   no_aggr        String?
   angke          Int?
   snapshot_date DateTime?
-  id_mst_wilayah Int?
+  branch String?
   file_name      String
 
   @@index([no_aggr, snapshot_date])
@@ -163,7 +163,7 @@ model ascii_aging_daily {
   ovd_eom        BigInt?
   no_aggr        String?
   angke          Int?
-  id_mst_wilayah Int?
+  branch         String?
   date           DateTime?
   file_name      String
 
