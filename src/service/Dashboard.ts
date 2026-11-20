@@ -72,7 +72,7 @@ const cabangFilter = (cabang?: string) => {
 };
 
 const lateFilter = async (late?: string) => {
-  if (!late) return {};
+  if (!late || late.toLowerCase() === "all") return {};
   const rows = await prisma.branch_late_area.findMany({
     where: { late },
     select: { branch: true },
