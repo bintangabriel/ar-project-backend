@@ -410,7 +410,8 @@ export const ModelName = {
   ascii_aging_monthly: 'ascii_aging_monthly',
   ascii_aging_daily: 'ascii_aging_daily',
   mst_file: 'mst_file',
-  aging_daily_summary: 'aging_daily_summary'
+  aging_daily_summary: 'aging_daily_summary',
+  branch_late_area: 'branch_late_area'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "importedData" | "user" | "user_otp" | "temp_user" | "session_token" | "user_session" | "role" | "ascii_sk" | "ascii_cr" | "ascii_aging" | "ascii_aging_monthly" | "ascii_aging_daily" | "mst_file" | "aging_daily_summary"
+    modelProps: "importedData" | "user" | "user_otp" | "temp_user" | "session_token" | "user_session" | "role" | "ascii_sk" | "ascii_cr" | "ascii_aging" | "ascii_aging_monthly" | "ascii_aging_daily" | "mst_file" | "aging_daily_summary" | "branch_late_area"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1466,6 +1467,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    branch_late_area: {
+      payload: Prisma.$branch_late_areaPayload<ExtArgs>
+      fields: Prisma.branch_late_areaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.branch_late_areaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.branch_late_areaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>
+        }
+        findFirst: {
+          args: Prisma.branch_late_areaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.branch_late_areaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>
+        }
+        findMany: {
+          args: Prisma.branch_late_areaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>[]
+        }
+        create: {
+          args: Prisma.branch_late_areaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>
+        }
+        createMany: {
+          args: Prisma.branch_late_areaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.branch_late_areaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>[]
+        }
+        delete: {
+          args: Prisma.branch_late_areaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>
+        }
+        update: {
+          args: Prisma.branch_late_areaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>
+        }
+        deleteMany: {
+          args: Prisma.branch_late_areaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.branch_late_areaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.branch_late_areaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>[]
+        }
+        upsert: {
+          args: Prisma.branch_late_areaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$branch_late_areaPayload>
+        }
+        aggregate: {
+          args: Prisma.Branch_late_areaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBranch_late_area>
+        }
+        groupBy: {
+          args: Prisma.branch_late_areaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Branch_late_areaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.branch_late_areaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Branch_late_areaCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1691,6 +1766,15 @@ export const Aging_daily_summaryScalarFieldEnum = {
 } as const
 
 export type Aging_daily_summaryScalarFieldEnum = (typeof Aging_daily_summaryScalarFieldEnum)[keyof typeof Aging_daily_summaryScalarFieldEnum]
+
+
+export const Branch_late_areaScalarFieldEnum = {
+  id: 'id',
+  branch: 'branch',
+  late: 'late'
+} as const
+
+export type Branch_late_areaScalarFieldEnum = (typeof Branch_late_areaScalarFieldEnum)[keyof typeof Branch_late_areaScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2009,6 +2093,7 @@ export type GlobalOmitConfig = {
   ascii_aging_daily?: Prisma.ascii_aging_dailyOmit
   mst_file?: Prisma.mst_fileOmit
   aging_daily_summary?: Prisma.aging_daily_summaryOmit
+  branch_late_area?: Prisma.branch_late_areaOmit
 }
 
 /* Types for Logging */

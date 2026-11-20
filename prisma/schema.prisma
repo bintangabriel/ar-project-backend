@@ -194,3 +194,12 @@ model aging_daily_summary {
   @@index([date])
   @@map("aging_daily_summary")
 }
+
+model branch_late_area {
+  id     Int    @id @default(autoincrement())
+  branch String @unique
+  late   String           
+
+  @@index([late])
+  @@map("branch_late_area")
+}

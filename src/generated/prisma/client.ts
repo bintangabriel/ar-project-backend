@@ -109,3 +109,8 @@ export type mst_file = Prisma.mst_fileModel
  * 
  */
 export type aging_daily_summary = Prisma.aging_daily_summaryModel
+/**
+ * Model branch_late_area
+ * 
+ */
+export type branch_late_area = Prisma.branch_late_areaModel

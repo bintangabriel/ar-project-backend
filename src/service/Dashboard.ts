@@ -48,6 +48,8 @@ export interface OverviewParams {
   lastMonth: string;
   /** id_mst_wilayah as string; empty / "all" = no filter */
   cabang?: string;
+  /** id_mst_late as string; empty / "all" = no filter */
+  late?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -69,15 +71,24 @@ const cabangFilter = (cabang?: string) => {
   return { branch: cabang };
 };
 
+const lateFilter = async (late?: string) => {
+  if (!late) return {};
+  const rows = await prisma.branch_late_area.findMany({
+    where: { late },
+    select: { branch: true },
+  });
+  return { branch: { in: rows.map((r) => r.branch) } };
+};
+
 /**
  * Picks the source table for a date:
  *  - day 1 of the month -> ascii_aging_monthly
  *  - any other day      -> ascii_aging_daily
  * Returns a function: (extraWhere) => sum of saldo_ar.
  */
-const buildSource = (iso: string, cabang?: string) => {
+const buildSource = async (iso: string, late?: string) => {
   const { y, m, d } = parseIsoDate(iso);
-  const branch = cabangFilter(cabang);
+  const branch = await lateFilter(late);
 
   if (d === 1) {
     // ASSUMPTION: ascii_aging_monthly has no date column, so we identify the
@@ -112,8 +123,10 @@ export async function getDashboardOverview(
   params: OverviewParams
 ): Promise<DashboardOverviewDTO> {
   const t = getThresholds();
-  const sumTM = buildSource(params.thisMonth, params.cabang);
-  const sumLM = buildSource(params.lastMonth, params.cabang);
+  const [sumTM, sumLM] = await Promise.all([
+    buildSource(params.thisMonth, params.late),
+    buildSource(params.lastMonth, params.late),
+  ]);
 
   const over = (days: number) => ({ ovd_eom: { gt: BigInt(days) } });
 

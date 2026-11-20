@@ -64,7 +64,8 @@ export const ModelName = {
   ascii_aging_monthly: 'ascii_aging_monthly',
   ascii_aging_daily: 'ascii_aging_daily',
   mst_file: 'mst_file',
-  aging_daily_summary: 'aging_daily_summary'
+  aging_daily_summary: 'aging_daily_summary',
+  branch_late_area: 'branch_late_area'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -269,6 +270,15 @@ export const Aging_daily_summaryScalarFieldEnum = {
 } as const
 
 export type Aging_daily_summaryScalarFieldEnum = (typeof Aging_daily_summaryScalarFieldEnum)[keyof typeof Aging_daily_summaryScalarFieldEnum]
+
+
+export const Branch_late_areaScalarFieldEnum = {
+  id: 'id',
+  branch: 'branch',
+  late: 'late'
+} as const
+
+export type Branch_late_areaScalarFieldEnum = (typeof Branch_late_areaScalarFieldEnum)[keyof typeof Branch_late_areaScalarFieldEnum]
 
 
 export const SortOrder = {

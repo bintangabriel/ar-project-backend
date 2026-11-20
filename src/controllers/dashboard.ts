@@ -10,6 +10,7 @@ export async function getDashboardOverviewRoute(req: Request, res: Response) {
   const tm = getQueryString(req.query.tm);
   const lm = getQueryString(req.query.lm);
   const cabang = getQueryString(req.query.cabang);
+  const late = getQueryString(req.query.late);
 
   if (!tm || !lm) {
     return res.status(400).json({
@@ -21,7 +22,8 @@ export async function getDashboardOverviewRoute(req: Request, res: Response) {
     const data = await getDashboardOverview({
       thisMonth: tm,
       lastMonth: lm,
-      ...(cabang !== undefined && { cabang })
+      ...(cabang !== undefined && { cabang }),
+      ...(late !== undefined && { late }),
     });
 
     return res.json(data);
